@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Catalog</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; margin: 0; }
+        .container { display: flex; flex: 1; }
+        aside { width: 250px; background: #ecf0f1; padding: 20px; border-right: 1px solid #bdc3c7; }
+        main { flex: 1; padding: 20px; }
+        .course-item { border-bottom: 1px solid #eee; padding: 15px 0; display: flex; justify-content: space-between; }
+        .rating { color: #f1c40f; }
+        details { margin-top: 10px; cursor: pointer; color: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <header style="background:#2c3e50; color:white; padding:10px; padding-left:30px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h2>Course Catalog</h2>
+            <nav style="margin-top: 5px;">
+                <a href="index.html" style="color: white; text-decoration: none; margin-right: 20px;">Home</a>
+                <a href="f2.html" style="color: white; text-decoration: none;">Alternative Home</a>
+            </nav>
+        </div>
+        <button id="viewEnrollments" style="background:#27ae60; color:white; border:none; padding:10px; cursor:pointer;">View Enrollments</button>
+    </header>
+
+    <div class="container">
+        <aside>
+            <h3>Filters</h3>
+            <label>Category:</label><br>
+            <select>
+                <option>All</option>
+                <option>Programming</option>
+                <option>Business</option>
+            </select>
+            <br><br>
+            <label>Difficulty:</label><br>
+            <input type="checkbox" id="beginner"> Beginner <br>
+            <input type="checkbox" id="advanced"> Advanced
+        </aside>
+
+        <main>
+            <div class="course-item" data-category="Programming" data-difficulty="Beginner">
+                <div>
+                    <h3>Python for Beginners</h3>
+                    <p>Instructor: Dr. Sarah Smith | Duration: 10 Weeks</p>
+                    <span class="rating">★★★★★ (4.8)</span>
+                    
+                    <details>
+                        <summary>Preview Modules</summary>
+                        <ul>
+                            <li>Module 1: Installing Python</li>
+                            <li>Module 2: Variables & Data Types</li>
+                            <li>Module 3: Your First Script</li>
+                        </ul>
+                    </details>
+                </div>
+                <div style="align-self: center;">
+                    <button class="btn enroll-btn" style="background:#3498db; color:white; border:none; padding:10px; cursor:pointer;">Enroll Now</button>
+                </div>
+            </div>
+
+            <div class="course-item" data-category="Programming" data-difficulty="Advanced">
+                <div>
+                    <h3>Advanced JavaScript</h3>
+                    <p>Instructor: Prof. John Doe | Duration: 12 Weeks</p>
+                    <span class="rating">★★★★☆ (4.5)</span>
+                    
+                    <details>
+                        <summary>Preview Modules</summary>
+                        <ul>
+                            <li>Module 1: Closures and Prototypes</li>
+                            <li>Module 2: Async Programming</li>
+                            <li>Module 3: Frameworks Overview</li>
+                        </ul>
+                    </details>
+                </div>
+                <div style="align-self: center;">
+                    <button class="btn enroll-btn" style="background:#3498db; color:white; border:none; padding:10px; cursor:pointer;">Enroll Now</button>
+                </div>
+            </div>
+
+            <div class="course-item" data-category="Business" data-difficulty="Beginner">
+                <div>
+                    <h3>Introduction to Marketing</h3>
+                    <p>Instructor: Ms. Emily Johnson | Duration: 8 Weeks</p>
+                    <span class="rating">★★★★★ (4.9)</span>
+                    
+                    <details>
+                        <summary>Preview Modules</summary>
+                        <ul>
+                            <li>Module 1: Marketing Basics</li>
+                            <li>Module 2: Digital Marketing</li>
+                            <li>Module 3: Branding Strategies</li>
+                        </ul>
+                    </details>
+                </div>
+                <div style="align-self: center;">
+                    <button class="btn enroll-btn" style="background:#3498db; color:white; border:none; padding:10px; cursor:pointer;">Enroll Now</button>
+                </div>
+            </div>
+
+            <div class="course-item" data-category="Business" data-difficulty="Advanced">
+                <div>
+                    <h3>Financial Analysis</h3>
+                    <p>Instructor: Dr. Michael Brown | Duration: 14 Weeks</p>
+                    <span class="rating">★★★★☆ (4.6)</span>
+                    
+                    <details>
+                        <summary>Preview Modules</summary>
+                        <ul>
+                            <li>Module 1: Financial Statements</li>
+                            <li>Module 2: Ratio Analysis</li>
+                            <li>Module 3: Investment Strategies</li>
+                        </ul>
+                    </details>
+                </div>
+                <div style="align-self: center;">
+                    <button class="btn enroll-btn" style="background:#3498db; color:white; border:none; padding:10px; cursor:pointer;">Enroll Now</button>
+                </div>
+            </div>
+
+            </main>
+    </div>
+
+    <script>
+        const categorySelect = document.querySelector('select');
+        const beginnerCheckbox = document.getElementById('beginner');
+        const advancedCheckbox = document.getElementById('advanced');
+        const courseItems = document.querySelectorAll('.course-item');
+
+        function filterCourses() {
+            const selectedCategory = categorySelect.value;
+            const showBeginner = beginnerCheckbox.checked;
+            const showAdvanced = advancedCheckbox.checked;
+
+            courseItems.forEach(item => {
+                const category = item.dataset.category;
+                const difficulty = item.dataset.difficulty;
+                const categoryMatch = selectedCategory === 'All' || category === selectedCategory;
+                const difficultyMatch = (difficulty === 'Beginner' && showBeginner) ||
+                                        (difficulty === 'Advanced' && showAdvanced) ||
+                                        (!showBeginner && !showAdvanced);
+
+                if (categoryMatch && difficultyMatch) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        categorySelect.addEventListener('change', filterCourses);
+        beginnerCheckbox.addEventListener('change', filterCourses);
+        advancedCheckbox.addEventListener('change', filterCourses);
+
+        // Enroll button functionality
+        document.querySelectorAll('.enroll-btn').forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const courseTitle = btn.parentElement.previousElementSibling.querySelector('h3').textContent;
+                let enrolled = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
+                if (!enrolled.includes(courseTitle)) {
+                    enrolled.push(courseTitle);
+                    localStorage.setItem('enrolledCourses', JSON.stringify(enrolled));
+                    alert(`Enrolled in ${courseTitle}! Check your enrollments.`);
+                } else {
+                    alert(`Already enrolled in ${courseTitle}.`);
+                }
+            });
+        });
+
+        // View Enrollments
+        document.getElementById('viewEnrollments').addEventListener('click', () => {
+            const enrolled = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
+            if (enrolled.length === 0) {
+                alert('No enrollments yet.');
+            } else {
+                alert('Enrolled Courses:\n' + enrolled.join('\n'));
+            }
+        });
+    </script>
+
+</body>
+</html>

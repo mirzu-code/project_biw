@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LMS | Learn Anything</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; color: #333; }
+        header { background: linear-gradient(45deg, #e74c3c, #3498db); color: white; padding: 1rem; text-align: center; }
+        .hero { background-image: url('UTHM.png'); background-size: cover; background-position: center; padding: 4rem 2rem; text-align: center; animation: heroBg 10s infinite; }
+        .btn { background: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; transition: transform 0.3s, box-shadow 0.3s, background 0.3s; }
+        .btn.green { background: #27ae60; }
+        .btn.green:hover { background: #229954; }
+        .section { padding: 2rem; max-width: 1000px; margin: auto; }
+        .grid { display: flex; gap: 20px; justify-content: space-around; }
+        .card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; width: 30%; transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: scale(1.15); box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+       
+        @keyframes heroBg {
+            0% { background-image: url('UTHM.png'); background-color: rgba(0,0,0,0.5); }
+            25% { background-color: #3498db; }
+            50% { background-image: url('uthm dsi.png'); background-color: rgba(0,0,0,0.5); }
+            75% { background-color: #e74c3c; }
+            100% { background-image: url('uthm pagoh.png'); background-color: rgba(0,0,0,0.5); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="UTHM_LOGO-removebg-preview.png" alt="UTHM Logo" style="width: 70px; height: auto; margin-right: 10px;">
+            <h1>UTHM HOMEPAGE</h1>
+        </div>
+        <nav style="margin-top: 10px;">
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Engineering</a>
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Science</a>
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Business</a>
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Arts</a>
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Medicine</a>
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Law</a>
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Education</a>
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Technology</a>
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Social Sciences</a>
+            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Agriculture</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2 style="color: white;">Unlock Your Potential With Us</h2>
+        <p style="color: white;">With Wisdom We Explore.</p>
+        <br>
+        <a href="catalog.html" class="btn">Browse Courses</a>
+        <a href="signin.html" class="btn green">Sign In</a>
+        <a href="signup.html" class="btn green">Sign Up</a>
+    </section>
+
+    <section class="section">
+        <h3>Featured Courses</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>Web Development 101</h4>
+                <p>Master HTML, CSS, and JS from scratch.</p>
+            </div>
+            <div class="card">
+                <h4>Data Science Basics</h4>
+                <p>Learn to analyze data with Python.</p>
+            </div>
+            <div class="card">
+                <h4>Graphic Design</h4>
+                <p>Create stunning visuals with ease.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3>What Our Students Say</h3>
+        <blockquote>"This platform changed my career. The instructors are top-notch!" - <strong>Alex J.</strong></blockquote>
+    </section>
+
+    <script>
+        document.getElementById('signupBtn').addEventListener('click', () => {
+            const name = prompt('Enter your name:');
+            const email = prompt('Enter your email:');
+            if (name && email) {
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                users.push({ name, email });
+                localStorage.setItem('users', JSON.stringify(users));
+                alert(`Welcome ${name}! You have signed up successfully.`);
+            } else {
+                alert('Sign up cancelled.');
+            }
+        });
+    </script>
+
+</body>
+</html>
