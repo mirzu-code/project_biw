@@ -11,7 +11,11 @@
         .btn.green { background: #27ae60; }
         .btn.green:hover { background: #229954; }
         .section { padding: 2rem; max-width: 1000px; margin: auto; }
-        .grid { display: flex; gap: 20px; justify-content: space-around; }
+        .grid { display: flex; gap: 20px; justify-content: flex-start; transition: transform 0.5s ease; width: calc(30% * 13 + 20px * 12); }
+        .carousel-container { overflow: hidden; width: calc(30% * 3 + 20px * 2); margin: auto; position: relative; }
+        .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: #3498db; color: white; border: none; padding: 10px; cursor: pointer; z-index: 1; }
+        .arrow.left { left: 10px; }
+        .arrow.right { right: 10px; }
         .card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; width: 30%; transition: transform 0.3s, box-shadow 0.3s; }
         .card:hover { transform: scale(1.15); box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
        
@@ -32,16 +36,16 @@
             <h1>UTHM HOMEPAGE</h1>
         </div>
         <nav style="margin-top: 10px;">
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Engineering</a>
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Science</a>
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Business</a>
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Arts</a>
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Medicine</a>
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Law</a>
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Education</a>
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Technology</a>
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Social Sciences</a>
-            <a href="catalog.html" style="color: white; text-decoration: none; margin-left: 20px;">Faculty of Agriculture</a>
+            <a href="catalog-FKAAB.html" title="Civil Engineering And Built Environment" style="color: white; text-decoration: none; margin-left: 20px;">FKAAB</a>
+            <a href="catalog-FKEE.html" title="Electric And Elctronic Engineering " style="color: white; text-decoration: none; margin-left: 20px;">FKEE</a>
+            <a href="catalog-FKMP.html" title="Mechanical And Manufacturing Engineering" style="color: white; text-decoration: none; margin-left: 20px;">FKMP</a>
+            <a href="catalog-FPTP.html" title="Technology Management Amd Business" style="color: white; text-decoration: none; margin-left: 20px;">FPTP</a>
+            <a href="catalog-FPTV.html" title="Technical And Vocational Education" style="color: white; text-decoration: none; margin-left: 20px;">FPTV</a>
+            <a href="catalog-FSKTM.html" title="Computer Science And Information Technology" style="color: white; text-decoration: none; margin-left: 20px;">FSKTM</a>
+            <a href="catalog-FAST.html" title="Applied Sciences And Technology" style="color: white; text-decoration: none; margin-left: 20px;">FAST</a>
+            <a href="catalog-FTK.html" title="Engineering Technology" style="color: white; text-decoration: none; margin-left: 20px;">FTK</a>
+            <a href="catalog-JBS.html" title="Johor Business School" style="color: white; text-decoration: none; margin-left: 20px;">JBS</a>
+            <a href="catalog-MSA.html" title="Metro System Academy" style="color: white; text-decoration: none; margin-left: 20px;">MSA</a>
         </nav>
     </header>
 
@@ -56,19 +60,51 @@
 
     <section class="section">
         <h3>Featured Courses</h3>
-        <div class="grid">
-            <div class="card">
-                <h4>Web Development 101</h4>
-                <p>Master HTML, CSS, and JS from scratch.</p>
+        <div class="carousel-container">
+            <button class="arrow left" id="prev">&lt;</button>
+            <div class="grid" id="carousel">
+                <div class="card" onclick="window.location.href='catalog-FKAAB.html'">
+                    <h4>Civil Engineering And Built Environment</h4>
+                    <p>Learn about structures, construction, and environmental engineering.</p>
+                </div>
+                <div class="card" onclick="window.location.href='catalog-FKEE.html'">
+                    <h4>Electric And Electronic Engineering</h4>
+                    <p>Explore electrical systems, electronics, and power engineering.</p>
+                </div>
+                <div class="card" onclick="window.location.href='catalog-FKMP.html'">
+                    <h4>Mechanical And Manufacturing Engineering</h4>
+                    <p>Study mechanics, manufacturing processes, and industrial engineering.</p>
+                </div>
+                <div class="card" onclick="window.location.href='catalog-FPTP.html'">
+                    <h4>Technology Management And Business</h4>
+                    <p>Discover technology management, business strategies, and innovation.</p>
+                </div>
+                <div class="card" onclick="window.location.href='catalog-FPTV.html'">
+                    <h4>Technical And Vocational Education</h4>
+                    <p>Gain skills in technical education, vocational training, and career development.</p>
+                </div>
+                <div class="card" onclick="window.location.href='catalog-FSKTM.html'">
+                    <h4>Computer Science And Information Technology</h4>
+                    <p>Dive into programming, software development, and IT solutions.</p>
+                </div>
+                <div class="card" onclick="window.location.href='catalog-FAST.html'">
+                    <h4>Applied Sciences And Technology</h4>
+                    <p>Apply scientific principles to technology and real-world problems.</p>
+                </div>
+                <div class="card" onclick="window.location.href='catalog-FTK.html'">
+                    <h4>Engineering Technology</h4>
+                    <p>Focus on engineering applications, design, and technological advancements.</p>
+                </div>
+                <div class="card" onclick="window.location.href='catalog-JBS.html'">
+                    <h4>Johor Business School</h4>
+                    <p>Learn business administration, management, and entrepreneurial skills.</p>
+                </div>
+                <div class="card" onclick="window.location.href='catalog-MSA.html'">
+                    <h4>Metro System Academy</h4>
+                    <p>Explore urban planning, transportation systems, and metropolitan studies.</p>
+                </div>
             </div>
-            <div class="card">
-                <h4>Data Science Basics</h4>
-                <p>Learn to analyze data with Python.</p>
-            </div>
-            <div class="card">
-                <h4>Graphic Design</h4>
-                <p>Create stunning visuals with ease.</p>
-            </div>
+            <button class="arrow right" id="next">&gt;</button>
         </div>
     </section>
 
@@ -78,6 +114,49 @@
     </section>
 
     <script>
+        // Carousel functionality
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let currentIndex = 0;
+        const totalCards = 10;
+        const cardsPerView = 3;
+
+        const cardElements = document.querySelectorAll('.card');
+        // Clone first 3 cards to end for seamless loop
+        for (let i = 0; i < cardsPerView; i++) {
+            const clone = cardElements[i].cloneNode(true);
+            carousel.appendChild(clone);
+        }
+        const cardWidthPx = cardElements[0].offsetWidth + 20; // including gap
+
+        function updateCarousel() {
+            const translateX = -currentIndex * cardWidthPx;
+            carousel.style.transform = `translateX(${translateX}px)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = totalCards - cardsPerView;
+            }
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            if (currentIndex > totalCards - cardsPerView) {
+                carousel.style.transition = 'none';
+                currentIndex = 0;
+                updateCarousel();
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease';
+                }, 10);
+            } else {
+                updateCarousel();
+            }
+        });
+
         document.getElementById('signupBtn').addEventListener('click', () => {
             const name = prompt('Enter your name:');
             const email = prompt('Enter your email:');
@@ -85,11 +164,29 @@
                 const users = JSON.parse(localStorage.getItem('users') || '[]');
                 users.push({ name, email });
                 localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', email);
                 alert(`Welcome ${name}! You have signed up successfully.`);
             } else {
                 alert('Sign up cancelled.');
             }
         });
+
+        updateCarousel();
+
+        // Auto-scroll the carousel every 3 seconds with seamless loop
+        setInterval(() => {
+            currentIndex++;
+            if (currentIndex > totalCards - cardsPerView) {
+                carousel.style.transition = 'none';
+                currentIndex = 0;
+                updateCarousel();
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease';
+                }, 10);
+            } else {
+                updateCarousel();
+            }
+        }, 3000);
     </script>
 
 </body>

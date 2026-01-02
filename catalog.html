@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <title>Course Catalog</title>
     <style>
-        body { font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; margin: 0; }
-        .container { display: flex; flex: 1; }
-        aside { width: 250px; background: #ecf0f1; padding: 20px; border-right: 1px solid #bdc3c7; }
-        main { flex: 1; padding: 20px; }
-        .course-item { border-bottom: 1px solid #eee; padding: 15px 0; display: flex; justify-content: space-between; }
-        .rating { color: #f1c40f; }
-        details { margin-top: 10px; cursor: pointer; color: #2980b9; }
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; color: #333; }
+        header { background: linear-gradient(45deg, #e74c3c, #3498db); color: white; padding: 1rem; text-align: center; }
+        .btn { background: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; transition: transform 0.3s, box-shadow 0.3s, background 0.3s; }
+        .btn.green { background: #27ae60; }
+        .btn.green:hover { background: #229954; }
+        .section { padding: 2rem; max-width: 1000px; margin: auto; }
+        .container { display: flex; flex-direction: column; }
+        main { padding: 20px; }
+        main h3 { margin-top: 30px; font-size: 1.5em; color: #2c3e50; }
+        ul { list-style: none; padding: 0; }
+        li a { color: #2980b9; text-decoration: none; font-size: 18px; }
+        li a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <header style="background:#2c3e50; color:white; padding:10px; padding-left:30px; display: flex; justify-content: space-between; align-items: center;">
+    <header style="background: linear-gradient(45deg, #e74c3c, #3498db); color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
         <div>
             <h2>Course Catalog</h2>
             <nav style="margin-top: 5px;">
@@ -27,160 +32,22 @@
     </header>
 
     <div class="container">
-        <aside>
-            <h3>Filters</h3>
-            <label>Category:</label><br>
-            <select>
-                <option>All</option>
-                <option>Programming</option>
-                <option>Business</option>
-            </select>
-            <br><br>
-            <label>Difficulty:</label><br>
-            <input type="checkbox" id="beginner"> Beginner <br>
-            <input type="checkbox" id="advanced"> Advanced
-        </aside>
-
         <main>
-            <div class="course-item" data-category="Programming" data-difficulty="Beginner">
-                <div>
-                    <h3>Python for Beginners</h3>
-                    <p>Instructor: Dr. Sarah Smith | Duration: 10 Weeks</p>
-                    <span class="rating">★★★★★ (4.8)</span>
-                    
-                    <details>
-                        <summary>Preview Modules</summary>
-                        <ul>
-                            <li>Module 1: Installing Python</li>
-                            <li>Module 2: Variables & Data Types</li>
-                            <li>Module 3: Your First Script</li>
-                        </ul>
-                    </details>
-                </div>
-                <div style="align-self: center;">
-                    <button class="btn enroll-btn" style="background:#3498db; color:white; border:none; padding:10px; cursor:pointer;">Enroll Now</button>
-                </div>
-            </div>
-
-            <div class="course-item" data-category="Programming" data-difficulty="Advanced">
-                <div>
-                    <h3>Advanced JavaScript</h3>
-                    <p>Instructor: Prof. John Doe | Duration: 12 Weeks</p>
-                    <span class="rating">★★★★☆ (4.5)</span>
-                    
-                    <details>
-                        <summary>Preview Modules</summary>
-                        <ul>
-                            <li>Module 1: Closures and Prototypes</li>
-                            <li>Module 2: Async Programming</li>
-                            <li>Module 3: Frameworks Overview</li>
-                        </ul>
-                    </details>
-                </div>
-                <div style="align-self: center;">
-                    <button class="btn enroll-btn" style="background:#3498db; color:white; border:none; padding:10px; cursor:pointer;">Enroll Now</button>
-                </div>
-            </div>
-
-            <div class="course-item" data-category="Business" data-difficulty="Beginner">
-                <div>
-                    <h3>Introduction to Marketing</h3>
-                    <p>Instructor: Ms. Emily Johnson | Duration: 8 Weeks</p>
-                    <span class="rating">★★★★★ (4.9)</span>
-                    
-                    <details>
-                        <summary>Preview Modules</summary>
-                        <ul>
-                            <li>Module 1: Marketing Basics</li>
-                            <li>Module 2: Digital Marketing</li>
-                            <li>Module 3: Branding Strategies</li>
-                        </ul>
-                    </details>
-                </div>
-                <div style="align-self: center;">
-                    <button class="btn enroll-btn" style="background:#3498db; color:white; border:none; padding:10px; cursor:pointer;">Enroll Now</button>
-                </div>
-            </div>
-
-            <div class="course-item" data-category="Business" data-difficulty="Advanced">
-                <div>
-                    <h3>Financial Analysis</h3>
-                    <p>Instructor: Dr. Michael Brown | Duration: 14 Weeks</p>
-                    <span class="rating">★★★★☆ (4.6)</span>
-                    
-                    <details>
-                        <summary>Preview Modules</summary>
-                        <ul>
-                            <li>Module 1: Financial Statements</li>
-                            <li>Module 2: Ratio Analysis</li>
-                            <li>Module 3: Investment Strategies</li>
-                        </ul>
-                    </details>
-                </div>
-                <div style="align-self: center;">
-                    <button class="btn enroll-btn" style="background:#3498db; color:white; border:none; padding:10px; cursor:pointer;">Enroll Now</button>
-                </div>
-            </div>
-
-            </main>
+            <h3>Faculties</h3>
+            <p>Click on a faculty to view the courses offered:</p>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="catalog-FKAAB.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Civil Engineering And Built Environment</a></li>
+                <li><a href="catalog-FKEE.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Electric And Electronic Engineering</a></li>
+                <li><a href="catalog-FKMP.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Mechanical And Manufacturing Engineering</a></li>
+                <li><a href="catalog-FPTP.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Technology Management And Business</a></li>
+                <li><a href="catalog-FPTV.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Technical And Vocational Education</a></li>
+                <li><a href="catalog-FSKTM.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Computer Science And Information Technology</a></li>
+                <li><a href="catalog-FAST.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Applied Sciences And Technology</a></li>
+                <li><a href="catalog-FTK.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Engineering Technology</a></li>
+                <li><a href="catalog-JBS.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Johor Business School</a></li>
+                <li><a href="catalog-MSA.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Metro System Academy</a></li>
+            </ul>
+        </main>
     </div>
-
-    <script>
-        const categorySelect = document.querySelector('select');
-        const beginnerCheckbox = document.getElementById('beginner');
-        const advancedCheckbox = document.getElementById('advanced');
-        const courseItems = document.querySelectorAll('.course-item');
-
-        function filterCourses() {
-            const selectedCategory = categorySelect.value;
-            const showBeginner = beginnerCheckbox.checked;
-            const showAdvanced = advancedCheckbox.checked;
-
-            courseItems.forEach(item => {
-                const category = item.dataset.category;
-                const difficulty = item.dataset.difficulty;
-                const categoryMatch = selectedCategory === 'All' || category === selectedCategory;
-                const difficultyMatch = (difficulty === 'Beginner' && showBeginner) ||
-                                        (difficulty === 'Advanced' && showAdvanced) ||
-                                        (!showBeginner && !showAdvanced);
-
-                if (categoryMatch && difficultyMatch) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        categorySelect.addEventListener('change', filterCourses);
-        beginnerCheckbox.addEventListener('change', filterCourses);
-        advancedCheckbox.addEventListener('change', filterCourses);
-
-        // Enroll button functionality
-        document.querySelectorAll('.enroll-btn').forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                const courseTitle = btn.parentElement.previousElementSibling.querySelector('h3').textContent;
-                let enrolled = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
-                if (!enrolled.includes(courseTitle)) {
-                    enrolled.push(courseTitle);
-                    localStorage.setItem('enrolledCourses', JSON.stringify(enrolled));
-                    alert(`Enrolled in ${courseTitle}! Check your enrollments.`);
-                } else {
-                    alert(`Already enrolled in ${courseTitle}.`);
-                }
-            });
-        });
-
-        // View Enrollments
-        document.getElementById('viewEnrollments').addEventListener('click', () => {
-            const enrolled = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
-            if (enrolled.length === 0) {
-                alert('No enrollments yet.');
-            } else {
-                alert('Enrolled Courses:\n' + enrolled.join('\n'));
-            }
-        });
-    </script>
-
 </body>
 </html>

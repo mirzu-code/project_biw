@@ -23,8 +23,15 @@
         document.getElementById('signinForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
-            alert(`Welcome back! Signed in with ${email}.`);
-            // Here you can add code to authenticate user
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => u.email === email);
+            if (user) {
+                localStorage.setItem('currentUser', email);
+                alert(`Welcome back, ${user.name}!`);
+                window.location.href = 'index.html';
+            } else {
+                alert('User not found. Please sign up first.');
+            }
         });
     </script>
 </body>
