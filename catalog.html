@@ -1,53 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Course Catalog</title>
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; margin: 0; color: #333; }
-        header { background: linear-gradient(45deg, #e74c3c, #3498db); color: white; padding: 1rem; text-align: center; }
-        .btn { background: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; transition: transform 0.3s, box-shadow 0.3s, background 0.3s; }
-        .btn.green { background: #27ae60; }
-        .btn.green:hover { background: #229954; }
-        .section { padding: 2rem; max-width: 1000px; margin: auto; }
-        .container { display: flex; flex-direction: column; }
-        main { padding: 20px; }
-        main h3 { margin-top: 30px; font-size: 1.5em; color: #2c3e50; }
-        ul { list-style: none; padding: 0; }
-        li a { color: #2980b9; text-decoration: none; font-size: 18px; }
-        li a:hover { text-decoration: underline; }
-    </style>
+<meta charset="UTF-8">
+<title>Course Catalog - EduStream</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f0f2f5;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+        background: linear-gradient(45deg, #e74c3c, #3498db);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    header h2 { margin: 0; font-size: 1.8em; }
+    header a, header button {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        margin-left: 15px;
+        cursor: pointer;
+        border: none;
+        background: none;
+    }
+
+    #viewEnrollments, #backHome {
+        background: #27ae60;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-left: 10px;
+        transition: background 0.3s;
+    }
+
+    #viewEnrollments:hover { background: #229954; }
+    #backHome:hover { background: #2980b9; }
+
+    /* Sidebar */
+    #sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100%;
+        background: #2c3e50;
+        color: white;
+        padding: 20px;
+        box-shadow: 3px 0 10px rgba(0,0,0,0.3);
+        transition: 0.3s;
+        z-index: 200;
+    }
+
+    #sidebar.active { left: 0; }
+
+    #sidebar img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 10px;
+        display: block;
+        object-fit: cover;
+        border: 2px solid #27ae60;
+    }
+
+    #sidebar h3 { text-align: center; margin: 10px 0 5px; }
+    #sidebar p { text-align: center; margin: 2px 0; font-size: 14px; }
+
+    #sidebar button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin-top: 20px;
+        background: #27ae60;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    #sidebar button:hover { background: #229954; }
+
+    /* Overlay when sidebar opens */
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        display: none;
+        z-index: 150;
+    }
+    #overlay.active { display: block; }
+
+    /* Main content */
+    main {
+        padding: 20px;
+        max-width: 1000px;
+        margin: 20px auto;
+    }
+
+    main h3 { font-size: 1.5em; color: #34495e; margin-bottom: 10px; }
+
+    .faculty-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .faculty-card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+    }
+
+    .faculty-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .faculty-card a {
+        text-decoration: none;
+        color: #2980b9;
+        font-size: 18px;
+        display: block;
+    }
+</style>
 </head>
 <body>
 
-    <header style="background: linear-gradient(45deg, #e74c3c, #3498db); color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
-        <div>
-            <h2>Course Catalog</h2>
-            <nav style="margin-top: 5px;">
-                <a href="index.html" style="color: white; text-decoration: none; margin-right: 20px;">Home</a>
-                <a href="f2.html" style="color: white; text-decoration: none;">Alternative Home</a>
-            </nav>
-        </div>
-        <button id="viewEnrollments" style="background:#27ae60; color:white; border:none; padding:10px; cursor:pointer;">View Enrollments</button>
-    </header>
-
-    <div class="container">
-        <main>
-            <h3>Faculties</h3>
-            <p>Click on a faculty to view the courses offered:</p>
-            <ul style="list-style: none; padding: 0;">
-                <li><a href="catalog-FKAAB.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Civil Engineering And Built Environment</a></li>
-                <li><a href="catalog-FKEE.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Electric And Electronic Engineering</a></li>
-                <li><a href="catalog-FKMP.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Mechanical And Manufacturing Engineering</a></li>
-                <li><a href="catalog-FPTP.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Technology Management And Business</a></li>
-                <li><a href="catalog-FPTV.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Technical And Vocational Education</a></li>
-                <li><a href="catalog-FSKTM.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Computer Science And Information Technology</a></li>
-                <li><a href="catalog-FAST.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Applied Sciences And Technology</a></li>
-                <li><a href="catalog-FTK.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Engineering Technology</a></li>
-                <li><a href="catalog-JBS.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Johor Business School</a></li>
-                <li><a href="catalog-MSA.html" style="color: #2980b9; text-decoration: none; font-size: 18px;">Metro System Academy</a></li>
-            </ul>
-        </main>
+<header>
+    <button id="sidebarToggle">&#9776;</button>
+    <h2>Course Catalog</h2>
+    <div>
+        <button id="viewEnrollments">View My Enrollments</button>
+        <button id="backHome">Back to Homepage</button>
     </div>
+</header>
+
+<!-- Sidebar -->
+<div id="sidebar">
+    <img id="profilePic" src="ka.png" alt="Profile Photo">
+    <h3 id="userName">Student Name</h3>
+    <p id="userEmail">student@example.com</p>
+    <button id="logoutBtn">Log Out</button>
+</div>
+<div id="overlay"></div>
+
+<main>
+    <h3>Faculties</h3>
+    <p>Click on a faculty to view courses offered:</p>
+    <div class="faculty-list">
+        <div class="faculty-card"><a href="catalog-FKAAB.html">Civil Engineering And Built Environment</a></div>
+        <div class="faculty-card"><a href="catalog-FKEE.html">Electric And Electronic Engineering</a></div>
+        <div class="faculty-card"><a href="catalog-FKMP.html">Mechanical And Manufacturing Engineering</a></div>
+        <div class="faculty-card"><a href="catalog-FPTP.html">Technology Management And Business</a></div>
+        <div class="faculty-card"><a href="catalog-FPTV.html">Technical And Vocational Education</a></div>
+        <div class="faculty-card"><a href="catalog-FSKTM.html">Computer Science And Information Technology</a></div>
+        <div class="faculty-card"><a href="catalog-FAST.html">Applied Sciences And Technology</a></div>
+        <div class="faculty-card"><a href="catalog-FTK.html">Engineering Technology</a></div>
+        <div class="faculty-card"><a href="catalog-JBS.html">Johor Business School</a></div>
+        <div class="faculty-card"><a href="catalog-MSA.html">Metro System Academy</a></div>
+    </div>
+</main>
+
+<script>
+    // Sidebar toggle
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    document.getElementById('sidebarToggle').addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    // Load current user info
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (!user) {
+        alert("Please sign in first.");
+        window.location.href = "signin.html";
+    } else {
+        document.getElementById('userName').innerText = user.name;
+        document.getElementById('userEmail').innerText = user.email;
+        if(user.photo) document.getElementById('profilePic').src = user.photo;
+    }
+
+    // View Enrollments
+    document.getElementById('viewEnrollments').addEventListener('click', () => {
+        fetch(`http://localhost:3000/enrollments/${user.email}`)
+        .then(res => res.json())
+        .then(courses => {
+            if (!courses || courses.length === 0) {
+                alert("You have no enrollments yet.");
+            } else {
+                const courseNames = {
+                    HTML_CSS: "HTML & CSS Basics",
+                    JS_ESSENTIALS: "JavaScript Essentials",
+                    NODEJS_BEGINNERS: "Node.js for Beginners",
+                    REACT_FUNDA: "React Fundamentals"
+                };
+                const list = courses.map(c => courseNames[c.course_id] || c.course_id).join('\n');
+                alert("Your enrolled courses:\n" + list);
+            }
+        })
+        .catch(() => alert("Error fetching enrollments."));
+    });
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        localStorage.removeItem('currentUser');
+        window.location.href = "signin.html";
+    });
+
+    // Back to Homepage
+    document.getElementById('backHome').addEventListener('click', () => {
+        window.location.href = "index.html"; // Adjust if your homepage filename is different
+    });
+</script>
+
 </body>
 </html>

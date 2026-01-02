@@ -1,128 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Medicine Courses</title>
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; background: linear-gradient(to bottom, #f8f9fa, #e9ecef); }
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: transform 0.3s; }
-        button:hover { transform: scale(1.05); }
-        .course-item { border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 15px; display: flex; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; }
-        .course-item:hover { transform: translateY(-5px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .container { display: flex; flex: 1; }
-        aside { width: 250px; background: #ecf0f1; padding: 20px; border-right: 1px solid #bdc3c7; }
-        main { flex: 1; padding: 20px; }
-        .rating { color: #f1c40f; }
-        details { margin-top: 10px; cursor: pointer; color: #2980b9; }
-    </style>
+<meta charset="UTF-8">
+<title>Technical And Vocational Education</title>
+<style>
+/* Same CSS as previous pages */
+body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; background: linear-gradient(to bottom, #f8f9fa, #e9ecef); }
+header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: transform 0.3s; }
+button:hover { transform: scale(1.05); }
+.course-item { border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 15px; display: flex; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; }
+.course-item:hover { transform: translateY(-5px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.container { display: flex; flex: 1; }
+aside { width: 250px; background: #ecf0f1; padding: 20px; border-right: 1px solid #bdc3c7; }
+main { flex: 1; padding: 20px; }
+.rating { color: #f1c40f; }
+details { margin-top: 10px; cursor: pointer; color: #2980b9; }
+</style>
 </head>
 <body>
 
-    <header>
-        <div>
-            <h2>Technical And Vocational Education</h2>
-            <nav style="margin-top: 5px;">
-                <a href="index.html" style="color: white; text-decoration: none; margin-right: 20px;">Home</a>
-            </nav>
-        </div>
-        <button id="viewEnrollments">View Enrollments</button>
-    </header>
+<header>
+<div>
+<h2>Technical And Vocational Education</h2>
+<nav style="margin-top: 5px;">
+<a href="catalog.html" style="color: white; text-decoration: none; margin-right: 20px;">Catalog</a>
+<a href="index.html" style="color: white; text-decoration: none; margin-right: 20px;">Home</a>
+</nav>
+</div>
+<button id="viewEnrollments">View Enrollments</button>
+</header>
 
-    <div class="container">
-        <aside>
-            <h3>Filters</h3>
-            <label>Category:</label><br>
-            <select>
-                <option>All</option>
-                <option>Medical Science</option>
-            </select>
-            <br><br>
-            <label>Difficulty:</label><br>
-            <input type="checkbox" id="beginner"> Beginner <br>
-            <input type="checkbox" id="advanced"> Advanced
-        </aside>
+<div class="container">
+<aside>
+<h3>Filters</h3>
+<label>Category:</label><br>
+<select>
+<option>All</option>
+<option>Vocational</option>
+<option>Technical</option>
+</select>
+<br><br>
+<label>Difficulty:</label><br>
+<input type="checkbox" id="beginner"> Beginner <br>
+<input type="checkbox" id="advanced"> Advanced
+</aside>
 
-        <main>
-            <div class="course-item" data-category="Medical Science" data-difficulty="Beginner">
-                <div>
-                    <h3>Anatomy 101</h3>
-                    <p>Instructor: Dr. Med Expert | Duration: 12 Weeks</p>
-                    <span class="rating">★★★★★ (4.9)</span>
-                    
-                    <details>
-                        <summary>Preview Modules</summary>
-                        <ul>
-                            <li>Module 1: Human Body Systems</li>
-                            <li>Module 2: Organs and Functions</li>
-                            <li>Module 3: Basic Physiology</li>
-                        </ul>
-                    </details>
-                </div>
-                <div style="align-self: center;">
-                    <button class="btn enroll-btn" style="background:#3498db; color:white; border:none; padding:10px; cursor:pointer;">Enroll Now</button>
-                </div>
-            </div>
+<main>
+<div class="course-item" data-category="Vocational" data-difficulty="Beginner">
+<div>
+<h3>Basic Carpentry</h3>
+<p>Instructor: Mr. Woodcraft | Duration: 6 Weeks</p>
+<span class="rating">★★★★☆ (4.5)</span>
+<details>
+<summary>Preview Modules</summary>
+<ul>
+<li>Module 1: Safety & Tools</li>
+<li>Module 2: Measuring & Cutting</li>
+<li>Module 3: Joining Techniques</li>
+</ul>
+</details>
+</div>
+<div style="align-self: center;">
+<button class="btn enroll-btn">Enroll Now</button>
+</div>
+</div>
 
-            </main>
-    </div>
+<div class="course-item" data-category="Technical" data-difficulty="Advanced">
+<div>
+<h3>Industrial Electronics</h3>
+<p>Instructor: Eng. Volt | Duration: 8 Weeks</p>
+<span class="rating">★★★★★ (4.8)</span>
+<details>
+<summary>Preview Modules</summary>
+<ul>
+<li>Module 1: Circuits</li>
+<li>Module 2: Sensors & Actuators</li>
+<li>Module 3: PLC Programming</li>
+</ul>
+</details>
+</div>
+<div style="align-self: center;">
+<button class="btn enroll-btn">Enroll Now</button>
+</div>
+</div>
 
-    <script>
-        const categorySelect = document.querySelector('select');
-        const beginnerCheckbox = document.getElementById('beginner');
-        const advancedCheckbox = document.getElementById('advanced');
-        const courseItems = document.querySelectorAll('.course-item');
+<div class="course-item" data-category="Vocational" data-difficulty="Beginner">
+<div>
+<h3>Automotive Basics</h3>
+<p>Instructor: Mr. Motor | Duration: 5 Weeks</p>
+<span class="rating">★★★★☆ (4.6)</span>
+<details>
+<summary>Preview Modules</summary>
+<ul>
+<li>Module 1: Engine Fundamentals</li>
+<li>Module 2: Maintenance</li>
+<li>Module 3: Safety Checks</li>
+</ul>
+</details>
+</div>
+<div style="align-self: center;">
+<button class="btn enroll-btn">Enroll Now</button>
+</div>
+</div>
 
-        function filterCourses() {
-            const selectedCategory = categorySelect.value;
-            const showBeginner = beginnerCheckbox.checked;
-            const showAdvanced = advancedCheckbox.checked;
+</main>
+</div>
 
-            courseItems.forEach(item => {
-                const category = item.dataset.category;
-                const difficulty = item.dataset.difficulty;
-                const categoryMatch = selectedCategory === 'All' || category === selectedCategory;
-                const difficultyMatch = (difficulty === 'Beginner' && showBeginner) ||
-                                        (difficulty === 'Advanced' && showAdvanced) ||
-                                        (!showBeginner && !showAdvanced);
+<script>
+// JS same as previous pages
+const categorySelect = document.querySelector('select');
+const beginnerCheckbox = document.getElementById('beginner');
+const advancedCheckbox = document.getElementById('advanced');
+const courseItems = document.querySelectorAll('.course-item');
 
-                if (categoryMatch && difficultyMatch) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+function filterCourses() {
+    const selectedCategory = categorySelect.value;
+    const showBeginner = beginnerCheckbox.checked;
+    const showAdvanced = advancedCheckbox.checked;
+
+    courseItems.forEach(item => {
+        const category = item.dataset.category;
+        const difficulty = item.dataset.difficulty;
+        const categoryMatch = selectedCategory === 'All' || category === selectedCategory;
+        const difficultyMatch = (difficulty === 'Beginner' && showBeginner) ||
+                                (difficulty === 'Advanced' && showAdvanced) ||
+                                (!showBeginner && !showAdvanced);
+
+        if (categoryMatch && difficultyMatch) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
         }
+    });
+}
 
-        categorySelect.addEventListener('change', filterCourses);
-        beginnerCheckbox.addEventListener('change', filterCourses);
-        advancedCheckbox.addEventListener('change', filterCourses);
+categorySelect.addEventListener('change', filterCourses);
+beginnerCheckbox.addEventListener('change', filterCourses);
+advancedCheckbox.addEventListener('change', filterCourses);
 
-        // Enroll button functionality
-        document.querySelectorAll('.enroll-btn').forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                const courseTitle = btn.parentElement.previousElementSibling.querySelector('h3').textContent;
-                let enrolled = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
-                if (!enrolled.includes(courseTitle)) {
-                    enrolled.push(courseTitle);
-                    localStorage.setItem('enrolledCourses', JSON.stringify(enrolled));
-                    alert(`Enrolled in ${courseTitle}! Check your enrollments.`);
-                } else {
-                    alert(`Already enrolled in ${courseTitle}.`);
-                }
-            });
-        });
+document.querySelectorAll('.enroll-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const courseTitle = btn.parentElement.previousElementSibling.querySelector('h3').textContent;
+        let enrolled = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
+        if (!enrolled.includes(courseTitle)) {
+            enrolled.push(courseTitle);
+            localStorage.setItem('enrolledCourses', JSON.stringify(enrolled));
+            alert(`Enrolled in ${courseTitle}! Check your enrollments.`);
+        } else {
+            alert(`Already enrolled in ${courseTitle}.`);
+        }
+    });
+});
 
-        // View Enrollments
-        document.getElementById('viewEnrollments').addEventListener('click', () => {
-            const enrolled = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
-            if (enrolled.length === 0) {
-                alert('No enrollments yet.');
-            } else {
-                alert('Enrolled Courses:\n' + enrolled.join('\n'));
-            }
-        });
-    </script>
+document.getElementById('viewEnrollments').addEventListener('click', () => {
+    const enrolled = JSON.parse(localStorage.getItem('enrolledCourses') || '[]');
+    if (enrolled.length === 0) {
+        alert('No enrollments yet.');
+    } else {
+        alert('Enrolled Courses:\n' + enrolled.join('\n'));
+    }
+});
+</script>
 
 </body>
 </html>

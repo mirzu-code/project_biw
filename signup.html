@@ -5,38 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - EduStream</title>
     <style>
-        body { font-family: sans-serif; background: linear-gradient(45deg, #e74c3c, #3498db); color: white; text-align: center; padding: 50px; }
-        form { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; }
-        input { display: block; width: 100%; margin: 10px 0; padding: 10px; border: none; border-radius: 5px; }
-        button { background: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #229954; }
+        body {
+            font-family: sans-serif;
+            background: linear-gradient(45deg, #e74c3c, #3498db);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        form {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+        }
+        input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #229954;
+        }
+        .links {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .links a {
+            color: #f1c40f;
+            text-decoration: none;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h1>Sign Up for EduStream</h1>
-    <form id="signupForm">
-        <input type="text" id="name" placeholder="Full Name" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button type="submit">Sign Up</button>
-    </form>
-    <script>
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Don't refresh the page!
+
+<h1>Sign Up for EduStream</h1>
+
+<form id="signupForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Sign Up</button>
+
+    <div class="links">
+        <p>Already have an account? <a href="signin.html">Sign in</a></p>
+    </div>
+</form>
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
     const data = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        password: document.getElementById('password').value
     };
 
-    // Send the data to our Chef (the server)
+    // Basic validation
+    if (!data.name || !data.email || !data.password) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
     fetch('http://localhost:3000/signup', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     })
-    .then(() => alert("You are now in our secret notebook!"));
+    .then(res => res.json())
+    .then(result => {
+        if (result.status === "Success") {
+            // Store user info in localStorage
+            localStorage.setItem('currentUser', JSON.stringify({
+                email: data.email,
+                name: data.name
+            }));
+
+            alert("Account created successfully!");
+            window.location.href = "catalog.html"; // redirect to course page
+        } else {
+            // Show server error message
+            alert(result.status || "Error creating account.");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Server error. Please try again later.");
+    });
 });
-    </script>
+</script>
+
 </body>
 </html>
