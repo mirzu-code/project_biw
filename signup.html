@@ -22,12 +22,21 @@
     </form>
     <script>
         document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            alert(`Welcome ${name}! You have signed up with ${email}.`);
-            // Here you can add code to send data to server
-        });
+    e.preventDefault(); // Don't refresh the page!
+
+    const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value
+    };
+
+    // Send the data to our Chef (the server)
+    fetch('http://localhost:3000/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    .then(() => alert("You are now in our secret notebook!"));
+});
     </script>
 </body>
 </html>
