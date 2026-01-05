@@ -1,40 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>LMS Discussion Forum</title>
+<title>Community</title>
 
 <style>
   body {
     font-family: Arial;
-    /* 🌈 UTHM gradient background */
     background: linear-gradient(135deg, #0B2A5B, #6A1B4D, #8B1A3C);
-    background-size: 300% 300%;
-    animation: uthmFlow 12s ease infinite;
     margin:0;
     padding:0;
   }
 
-  /* Smooth animated gradient */
-  @keyframes uthmFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+  .container { width:75%; margin:auto; padding:20px 0; }
 
-  .container {
-    width:75%;
-    margin:auto;
-    padding-top:20px;
-  }
-
-  /* Cards */
   .card {
     background:#ffffff;
     padding:12px;
-    border-radius:12px;
-    margin-top:12px;
     border:1px solid #ccc;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin-top:12px;
   }
 
   .thread-title { font-weight:bold; font-size:18px; }
@@ -42,58 +25,32 @@
   .reply {
     margin-left:25px;
     padding:8px;
-    border-left:3px solid #ddd;
+    border-left:3px solid #ccc;
     margin-top:6px;
-    border-radius:10px;
   }
 
-  .meta { color:#444; font-size:12px; }
-  .badge { padding:2px 6px; border-radius:6px; font-size:11px; }
+  .meta { font-size:12px; color:#444; }
 
-  /* 🔵 Student styling */
-  .student-box { background:#e6f0ff; }
-  .student { background:#b3d1ff; }
-
-  /* 🔴 Teacher styling */
-  .teacher-box { background:#ffe6e6; }
-  .teacher { background:#ffb3b3; }
-
-  /* 🟢 Best Answer */
-  .best { background:#d3f8d3 !important; border-left:4px solid #2d8a2d; }
-  .best-label { background:#2d8a2d; color:white; padding:2px 6px; border-radius:6px; }
-
-  .btn { padding:5px 10px; border-radius:6px; border:1px solid #777; cursor:pointer; margin-top:4px; }
-  .btn-upvote { background:#e8f2ff; }
-  .reply-form { display:none; margin-top:6px; }
+  .btn { padding:5px 10px; border:1px solid #777; cursor:pointer; margin-top:4px; }
 
   input, textarea, select {
     width:100%;
     padding:7px;
-    border-radius:6px;
     border:1px solid #888;
   }
-
-  .tag { background:#e7e7ff; padding:3px 8px; border-radius:6px; font-size:12px; }
 </style>
 </head>
 
 <body>
 <div class="container">
 
-<h2 style="color:white;">Discussion Forum / Community Section</h2>
+<h2 style="color:white;">Community</h2>
 
-<input id="searchBar" placeholder="Search discussions..." onkeyup="searchThreads()" style="margin-bottom:10px; width:100%; padding:6px; border-radius:8px; border:1px solid #888;">
+<input id="searchBar" placeholder="Search discussions..."
+onkeyup="searchThreads()" style="margin-bottom:10px; width:100%; padding:6px; border:1px solid #888;">
 
-<!-- Create Thread -->
 <div class="card">
   <h3>Create New Discussion Thread</h3>
-
-  <select id="tag">
-    <option value="Assignment">Assignment</option>
-    <option value="Error Help">Error Help</option>
-    <option value="Lecture Topic">Lecture Topic</option>
-    <option value="Exam Revision">Exam Revision</option>
-  </select>
 
   <select id="role">
     <option value="Student">Student</option>
@@ -104,165 +61,135 @@
   <input id="topicTitle" placeholder="Discussion Title">
   <textarea id="topicBody" placeholder="Write your question or discussion..."></textarea>
 
-  <!-- Image upload -->
-  <input id="topicImage" type="file" accept="image/*">
-
   <button class="btn" onclick="addThread()">Post Thread</button>
 </div>
 
 <div id="forum"></div>
 </div>
 
-
 <script>
 function addThread(){
-  let role=document.getElementById("role").value;
-  let name=document.getElementById("userName").value;
-  let title=document.getElementById("topicTitle").value;
-  let body=document.getElementById("topicBody").value;
-  let tag=document.getElementById("tag").value;
-  let file=document.getElementById("topicImage").files[0];
+  let role = roleSelect.value;
+  let name = userName.value;
+  let title = topicTitle.value;
+  let body = topicBody.value;
 
-  if(!name||!title||!body) return alert("Complete all fields");
+  if(!name || !title || !body) return alert("Complete all fields");
 
-  let imgTag="";
-  if(file){
-    let url=URL.createObjectURL(file);
-    imgTag=`<br><img src="${url}" width="250">`;
-  }
+  let div = document.createElement("div");
+  div.className = "card thread";
 
-  let div=document.createElement("div");
-  div.className="card thread " + (role=='Teacher'?'teacher-box':'student-box');
-
-  div.innerHTML=`
+  div.innerHTML = `
     <p class="thread-title">${title}</p>
-    <span class="tag">${tag}</span>
-
-    <p>${body}${imgTag}</p>
+    <p>${body}</p>
 
     <p class="meta">
-      Posted by ${name}
-      <span class="badge ${role=='Teacher'?'teacher':'student'}">${role}</span>
+      Posted by ${name} (${role})
     </p>
 
-    <p class="meta">
-      Upvotes: <span class="count">0</span>
-      <button class="btn btn-upvote" onclick="upvote(this,true)">👍 Upvote</button>
+    <p class="meta vote-box" data-voted="false">
+      Votes: <span class="count">0</span>
+      <button class="btn" onclick="vote(this,1)">👍 Upvote</button>
+      <button class="btn" onclick="vote(this,-1)">👎 Downvote</button>
     </p>
 
     <button class="btn" onclick="toggleReply(this)">Reply</button>
 
-    <div class="reply-form">
+    <div class="reply-form" style="display:none;">
       <select>
         <option value="Student">Student</option>
         <option value="Teacher">Teacher</option>
       </select>
       <input placeholder="Your name">
       <input placeholder="Write your reply...">
-      <input type="file" accept="image/*">
       <button class="btn" onclick="submitReply(this)">Submit Reply</button>
     </div>
 
     <div class="replies"></div>
   `;
 
-  document.getElementById("forum").appendChild(div);
+  forum.appendChild(div);
 
-  document.getElementById("userName").value="";
-  document.getElementById("topicTitle").value="";
-  document.getElementById("topicBody").value="";
-  document.getElementById("topicImage").value="";
+  userName.value = topicTitle.value = topicBody.value = "";
 }
 
 function toggleReply(btn){
-  let box=btn.nextElementSibling;
-  box.style.display=box.style.display==="block"?"none":"block";
+  let box = btn.nextElementSibling;
+  box.style.display = box.style.display==="block" ? "none" : "block";
 }
 
 function submitReply(btn){
-  let box=btn.parentElement;
-  let role=box.children[0].value;
-  let name=box.children[1].value;
-  let text=box.children[2].value;
-  let file=box.children[3].files[0];
+  let box = btn.parentElement;
+  let role = box.children[0].value;
+  let name = box.children[1].value;
+  let text = box.children[2].value;
 
-  if(!name||!text) return;
+  if(!name || !text) return;
 
-  let imgTag="";
-  if(file){
-    let url=URL.createObjectURL(file);
-    imgTag=`<br><img src="${url}" width="200">`;
-  }
+  let replyDiv = document.createElement("div");
+  replyDiv.className = "reply";
 
-  let replyDiv=document.createElement("div");
-  replyDiv.className="reply " + (role=='Teacher'?'teacher-box':'student-box');
+  replyDiv.innerHTML = `
+    <p><b>${name}</b> (${role})<br>${text}</p>
 
-  replyDiv.innerHTML=`
-    <p><b>${name}</b>
-      <span class="badge ${role=='Teacher'?'teacher':'student'}">${role}</span><br>
-      ${text}${imgTag}
-    </p>
-
-    <p class="meta">
-      Upvotes: <span class="count">0</span>
-      <button class="btn btn-upvote" onclick="upvote(this,false)">👍 Upvote</button>
-      <span class="bestMark"></span>
+    <p class="meta vote-box" data-voted="false">
+      Votes: <span class="count">0</span>
+      <button class="btn" onclick="vote(this,1)">👍 Upvote</button>
+      <button class="btn" onclick="vote(this,-1)">👎 Downvote</button>
     </p>
 
     <button class="btn" onclick="toggleReply(this)">Reply</button>
 
-    <div class="reply-form">
+    <div class="reply-form" style="display:none;">
       <select>
         <option value="Student">Student</option>
         <option value="Teacher">Teacher</option>
       </select>
       <input placeholder="Your name">
       <input placeholder="Write your reply...">
-      <input type="file" accept="image/*">
       <button class="btn" onclick="submitReply(this)">Submit Reply</button>
     </div>
 
     <div class="replies"></div>
   `;
 
-  btn.parentElement.parentElement.querySelector(".replies").appendChild(replyDiv);
+  btn.closest(".thread, .reply").querySelector(".replies").appendChild(replyDiv);
 
   box.style.display="none";
-  box.children[1].value="";
-  box.children[2].value="";
-  box.children[3].value="";
-  updateBestAnswer(btn.closest(".thread"));
+  box.children[1].value = "";
+  box.children[2].value = "";
 }
 
-function upvote(btn){
-  let c=btn.parentElement.querySelector(".count");
-  c.textContent=parseInt(c.textContent)+1;
-  updateBestAnswer(btn.closest(".thread"));
-}
+function vote(btn, change){
+  let box = btn.parentElement;
 
-function updateBestAnswer(thread){
-  let replies=[...thread.querySelectorAll(".reply")];
-  replies.forEach(r=>{ r.classList.remove("best"); r.querySelector(".bestMark").innerHTML=""; });
+  // prevent second vote
+  if(box.dataset.voted === "true") return;
 
-  if(replies.length===0) return;
+  let c = box.querySelector(".count");
+  let value = parseInt(c.textContent) + change;
+  if(value < 0) value = 0;
+  c.textContent = value;
 
-  let best=replies.sort((a,b)=>
-    b.querySelector(".count").innerText - a.querySelector(".count").innerText
-  )[0];
-
-  if(parseInt(best.querySelector(".count").innerText)>0){
-    best.classList.add("best");
-    best.querySelector(".bestMark").innerHTML=`<span class="best-label">✔ Best Answer</span>`;
-  }
+  // lock voting
+  box.dataset.voted = "true";
+  box.querySelectorAll("button").forEach(b => b.disabled = true);
 }
 
 function searchThreads(){
-  let q=document.getElementById("searchBar").value.toLowerCase();
+  let q = searchBar.value.toLowerCase();
   document.querySelectorAll(".thread").forEach(t=>{
-    let text=t.innerText.toLowerCase();
-    t.style.display=text.includes(q)?"block":"none";
+    t.style.display = t.innerText.toLowerCase().includes(q) ? "block" : "none";
   });
 }
+
+// shortcuts
+const roleSelect = document.getElementById("role");
+const userName = document.getElementById("userName");
+const topicTitle = document.getElementById("topicTitle");
+const topicBody = document.getElementById("topicBody");
+const forum = document.getElementById("forum");
+const searchBar = document.getElementById("searchBar");
 </script>
 </body>
 </html>
