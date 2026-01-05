@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Community</title>
+
+<style>
+  body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #0B2A5B, #6A1B4D, #8B1A3C);
+    margin:0;
+    padding:0;
+  }
+
+  .container { width:75%; margin:auto; padding:20px 0; }
+
+  .card {
+    background:#ffffff;
+    padding:12px;
+    border:1px solid #ccc;
+    margin-top:12px;
+  }
+
+  .thread-title { font-weight:bold; font-size:18px; }
+
+  .reply {
+    margin-left:25px;
+    padding:8px;
+    border-left:3px solid #ccc;
+    margin-top:6px;
+  }
+
+  .meta { font-size:12px; color:#444; }
+
+  .btn { padding:5px 10px; border:1px solid #777; cursor:pointer; margin-top:4px; }
+
+  input, textarea, select {
+    width:100%;
+    padding:7px;
+    border:1px solid #888;
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h2 style="color:white;">Community</h2>
+
+<input id="searchBar" placeholder="Search discussions..."
+onkeyup="searchThreads()" style="margin-bottom:10px; width:100%; padding:6px; border:1px solid #888;">
+
+<div class="card">
+  <h3>Create New Discussion Thread</h3>
+
+  <select id="role">
+    <option value="Student">Student</option>
+    <option value="Teacher">Teacher</option>
+  </select>
+
+  <input id="userName" placeholder="Your Name">
+  <input id="topicTitle" placeholder="Discussion Title">
+  <textarea id="topicBody" placeholder="Write your question or discussion..."></textarea>
+
+  <button class="btn" onclick="addThread()">Post Thread</button>
+</div>
+
+<div id="forum"></div>
+</div>
+
+<script>
+function addThread(){
+  let role = roleSelect.value;
+  let name = userName.value;
+  let title = topicTitle.value;
+  let body = topicBody.value;
+
+  if(!name || !title || !body) return alert("Complete all fields");
+
+  let div = document.createElement("div");
+  div.className = "card thread";
+
+  div.innerHTML = `
+    <p class="thread-title">${title}</p>
+    <p>${body}</p>
+
+    <p class="meta">
+      Posted by ${name} (${role})
+    </p>
+
+    <p class="meta vote-box" data-voted="false">
+      Votes: <span class="count">0</span>
+      <button class="btn" onclick="vote(this,1)">👍 Upvote</button>
+      <button class="btn" onclick="vote(this,-1)">👎 Downvote</button>
+    </p>
+
+    <button class="btn" onclick="toggleReply(this)">Reply</button>
+
+    <div class="reply-form" style="display:none;">
+      <select>
+        <option value="Student">Student</option>
+        <option value="Teacher">Teacher</option>
+      </select>
+      <input placeholder="Your name">
+      <input placeholder="Write your reply...">
+      <button class="btn" onclick="submitReply(this)">Submit Reply</button>
+    </div>
+
+    <div class="replies"></div>
+  `;
+
+  forum.appendChild(div);
+
+  userName.value = topicTitle.value = topicBody.value = "";
+}
+
+function toggleReply(btn){
+  let box = btn.nextElementSibling;
+  box.style.display = box.style.display==="block" ? "none" : "block";
+}
+
+function submitReply(btn){
+  let box = btn.parentElement;
+  let role = box.children[0].value;
+  let name = box.children[1].value;
+  let text = box.children[2].value;
+
+  if(!name || !text) return;
+
+  let replyDiv = document.createElement("div");
+  replyDiv.className = "reply";
+
+  replyDiv.innerHTML = `
+    <p><b>${name}</b> (${role})<br>${text}</p>
+
+    <p class="meta vote-box" data-voted="false">
+      Votes: <span class="count">0</span>
+      <button class="btn" onclick="vote(this,1)">👍 Upvote</button>
+      <button class="btn" onclick="vote(this,-1)">👎 Downvote</button>
+    </p>
+
+    <button class="btn" onclick="toggleReply(this)">Reply</button>
+
+    <div class="reply-form" style="display:none;">
+      <select>
+        <option value="Student">Student</option>
+        <option value="Teacher">Teacher</option>
+      </select>
+      <input placeholder="Your name">
+      <input placeholder="Write your reply...">
+      <button class="btn" onclick="submitReply(this)">Submit Reply</button>
+    </div>
+
+    <div class="replies"></div>
+  `;
+
+  btn.closest(".thread, .reply").querySelector(".replies").appendChild(replyDiv);
+
+  box.style.display="none";
+  box.children[1].value = "";
+  box.children[2].value = "";
+}
+
+function vote(btn, change){
+  let box = btn.parentElement;
+
+  // prevent second vote
+  if(box.dataset.voted === "true") return;
+
+  let c = box.querySelector(".count");
+  let value = parseInt(c.textContent) + change;
+  if(value < 0) value = 0;
+  c.textContent = value;
+
+  // lock voting
+  box.dataset.voted = "true";
+  box.querySelectorAll("button").forEach(b => b.disabled = true);
+}
+
+function searchThreads(){
+  let q = searchBar.value.toLowerCase();
+  document.querySelectorAll(".thread").forEach(t=>{
+    t.style.display = t.innerText.toLowerCase().includes(q) ? "block" : "none";
+  });
+}
+
+// shortcuts
+const roleSelect = document.getElementById("role");
+const userName = document.getElementById("userName");
+const topicTitle = document.getElementById("topicTitle");
+const topicBody = document.getElementById("topicBody");
+const forum = document.getElementById("forum");
+const searchBar = document.getElementById("searchBar");
+</script>
+</body>
+</html>
