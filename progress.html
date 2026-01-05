@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LMS Progress Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            padding: 20px;
+        }
+
+        .tracker {
+            background: white;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        progress {
+            width: 100%;
+            height: 20px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .badge {
+            background: gold;
+            padding: 6px 10px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="tracker">
+    <h2>Student
+	Progress Tracker</h2>
+
+    <p><b>Course:</b> Fundmentals of Web Technology </p>
+
+    <p>Lessons Watched: <span id="lessons">0</span> / 5</p>
+    <p>Quizzes Taken: <span id="quizzes">0</span> / 2</p>
+
+    <progress id="progressBar" value="0" max="100"></progress>
+    <p>Overall Progress: <span id="percentage">0%</span></p>
+
+    <button onclick="completeLesson()">Complete Lesson</button><br>
+    <button onclick="completeQuiz()">Complete Quiz</button>
+
+    <div id="reward"></div>
+
+    <br>
+    <button onclick="downloadReport()">Download Progress Report</button>
+</div>
+
+<script>
+    let lessonsCompleted = 0;
+    let quizzesCompleted = 0;
+
+    function updateProgress() {
+        let lessonProgress = (lessonsCompleted / 5) * 70;
+        let quizProgress = (quizzesCompleted / 2) * 30;
+        let totalProgress = lessonProgress + quizProgress;
+
+        if (totalProgress > 100) totalProgress = 100;
+
+        document.getElementById("progressBar").value = totalProgress;
+        document.getElementById("percentage").innerText = Math.round(totalProgress) + "%";
+
+        if (totalProgress === 100) {
+            document.getElementById("reward").innerHTML =
+                "<p class='badge'>🎓 Course Completed – Certificate Earned</p>";
+        }
+    }
+
+    function completeLesson() {
+        if (lessonsCompleted < 5) {
+            lessonsCompleted++;
+            document.getElementById("lessons").innerText = lessonsCompleted;
+            updateProgress();
+        }
+    }
+
+    function completeQuiz() {
+        if (quizzesCompleted < 2) {
+            quizzesCompleted++;
+            document.getElementById("quizzes").innerText = quizzesCompleted;
+            updateProgress();
+        }
+    }
+
+    function downloadReport() {
+        let report =
+            "Progress Report\n\n" +
+            "Course: Fundmentals of Web Technology\n" +
+            "Lessons Completed: " + lessonsCompleted + "/5\n" +
+            "Quizzes Completed: " + quizzesCompleted + "/2\n" +
+            "Overall Progress: " + document.getElementById("percentage").innerText;
+
+        let blob = new Blob([report], { type: "text/plain" });
+        let link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "Progress_Report.txt";
+        link.click();
+    }
+</script>
+
+</body>
+</html>
