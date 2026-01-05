@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UTHM LMS</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #333;
+}
+
+/* LOGIN */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    width: 380px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 90px;
+    display: block;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin: 15px 0;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #004aad;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #003080;
+}
+
+.link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.link a {
+    color: #004aad;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* DASHBOARD */
+#dashboard {
+    display: none;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eef2f3, #cfd9df);
+}
+
+header {
+    background: #004aad;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.box {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.logout {
+    position: absolute;
+    right: 20px;
+    top: 25px;
+}
+
+.logout a {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="center" id="login">
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Universiti_Tun_Hussein_Onn_Malaysia_logo.png">
+        <h2>UTHM Student Login</h2>
+
+        <input id="studentId" placeholder="Student ID">
+        <input id="email" placeholder="Student Email">
+        <input type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+
+        <div class="link">
+            <a onclick="alert('Registration via UTHM system only')">Create Account</a><br>
+            <a onclick="alert('Password reset email sent')">Forgot Password?</a>
+        </div>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+    <header>
+        <h1 id="dashTitle"></h1>
+        <div class="logout">
+            <a onclick="logout()">Logout</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+
+            <!-- PROFILE -->
+            <div class="box">
+                <h3>My Profile</h3>
+                <input id="pName" placeholder="Full Name">
+                <input id="pId" placeholder="Student ID">
+                <input id="pAge" placeholder="Age">
+                <button onclick="updateProfile()">Update Profile</button>
+            </div>
+
+            <!-- ANNOUNCEMENTS -->
+            <div class="box">
+                <h3>University Announcements</h3>
+                <ul>
+                    <li>📢 Mid-Semester Break: 10–15 Oct</li>
+                    <li>📢 Final Exam Timetable Released</li>
+                    <li>📢 Course Registration Deadline Soon</li>
+                </ul>
+            </div>
+
+            <!-- COURSES -->
+            <div class="box">
+                <h3>Enrolled Courses</h3>
+                <input id="courseName" placeholder="Course Name">
+                <input id="courseCode" placeholder="Subject Code">
+                <input id="courseSection" placeholder="Section">
+                <button onclick="addCourse()">Add Course</button>
+                <ul id="courseList"></ul>
+            </div>
+
+            <!-- QR ATTENDANCE -->
+            <div class="box">
+                <h3>QR Attendance</h3>
+                <p>Scan QR code for attendance</p>
+                <button onclick="startQR()">Start Camera</button>
+                <p id="qrStatus"></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+let userName = "";
+
+function login() {
+    const id = document.getElementById("studentId").value;
+    const email = document.getElementById("email").value;
+
+    if (!email.endsWith("@student.uthm.edu.my")) {
+        alert("Only UTHM student email allowed");
+        return;
+    }
+
+    userName = email.split("@")[0];
+    document.getElementById("login").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    document.getElementById("dashTitle").innerText = userName.toUpperCase() + "'S DASHBOARD";
+}
+
+function logout() {
+    location.reload();
+}
+
+function updateProfile() {
+    alert("Profile updated successfully");
+}
+
+function addCourse() {
+    const name = courseName.value;
+    const code = courseCode.value;
+    const section = courseSection.value;
+
+    if (!name || !code || !section) return;
+
+    const li = document.createElement("li");
+    li.innerText = `${name} (${code}) - Section ${section}`;
+    courseList.appendChild(li);
+
+    courseName.value = "";
+    courseCode.value = "";
+    courseSection.value = "";
+}
+
+function startQR() {
+    document.getElementById("qrStatus").innerText =
+        "📷 Camera activated (QR scan simulated)";
+}
+</script>
+
+</body>
+</html>
