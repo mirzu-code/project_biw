@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Enrollment</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;   /* soft light blue background */
+        margin: 0;
+    }
+
+    header {
+        background-color: #add8e6;   /* light blue header */
+        text-align: center;
+        padding: 15px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    form {
+        background-color: white;
+        width: 380px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #b7dcee;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #b0cde5;
+    }
+
+    input[type="radio"] {
+        width: auto;
+    }
+
+    input[type="submit"] {
+        background-color: #87ceeb;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .note {
+        font-size: 14px;
+        color: #555;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        color: #4682b4;   /* steel blue */
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>&#11088; Course Enrollment &#11088;</h1>
+    <p>"Work on yourself, for yourself"</p>
+</header>
+
+<form>
+
+    <label>Full Name:</label>
+    <input type="text" required>
+
+    <br><br>
+
+    <label>Email Address:</label>
+    <input type="email" required>
+
+    <br><br>
+
+    <label>Select Course:</label>
+    <select>
+        <option>Web Development 101 (Paid)</option>
+        <option>Data Science Basics (Paid)</option>
+        <option>Graphic Design (Free)</option>
+    </select>
+
+    <br><br>
+
+    <label>Course Type:</label><br>
+    <input type="radio" name="type"> Free Course<br>
+    <input type="radio" name="type"> Paid Course
+
+    <br><br>
+
+    <label>Payment Method (For Paid Course):</label><br>
+    <input type="radio" name="payment"> Online Banking<br>
+    <input type="radio" name="payment"> Credit Card
+
+    <br><br>
+
+    <input type="submit" value="Enroll Now &#128153;">
+
+    <p class="note">
+        * Confirmation receipt and enrollment notification will be sent via email.
+    </p>
+
+</form>
+
+<a href="courses.html">← Back to Courses</a>
+
+<br><br>
+
+</body>
+</html>
