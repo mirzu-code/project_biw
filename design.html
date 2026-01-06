@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive LMS Design | BIW</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #f94144;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7ff;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Responsive Showcase Section */
+        .showcase-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Device Showcase */
+        .device-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+        }
+
+        .device {
+            text-align: center;
+            transition: var(--transition);
+            padding: 20px;
+            border-radius: var(--border-radius);
+        }
+
+        .device:hover {
+            transform: translateY(-10px);
+            background-color: white;
+            box-shadow: var(--box-shadow);
+        }
+
+        .device-icon {
+            font-size: 6rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .device-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .device-desc {
+            color: var(--gray);
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 35px 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgba(67, 97, 238, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin: 0 auto 25px;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-desc {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Responsive Layout Demo */
+        .layout-demo {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 80px;
+        }
+
+        .demo-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .demo-content {
+            padding: 40px;
+        }
+
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: var(--gray-light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .grid-item:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .grid-item i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .grid-item-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Breakpoint Indicators */
+        .breakpoints {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .breakpoint {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .breakpoint-size {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .breakpoint-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .breakpoint-desc {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Navigation Demo */
+        .nav-demo {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 80px;
+        }
+
+        .demo-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--gray-light);
+        }
+
+        .demo-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .demo-nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .demo-nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .demo-nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .demo-mobile-nav {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .demo-content-area {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+
+        .demo-sidebar {
+            background-color: var(--gray-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+        }
+
+        .demo-main {
+            background-color: var(--gray-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            min-height: 300px;
+        }
+
+        /* Responsive Testimonials */
+        .testimonials {
+            margin-bottom: 80px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: var(--border-radius);
+            margin-bottom: 80px;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) {
+            .device-showcase {
+                gap: 40px;
+            }
+            
+            .device-icon {
+                font-size: 5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .responsive-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .demo-content-area {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0 40px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .device-showcase {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .device {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .demo-nav-links {
+                display: none;
+            }
+            
+            .demo-mobile-nav {
+                display: block;
+            }
+            
+            .breakpoints {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+            
+            .breakpoint {
+                text-align: left;
+                width: 100%;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .showcase-section {
+                padding: 60px 0;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card, .testimonial, .nav-demo {
+                padding: 25px 20px;
+            }
+            
+            .responsive-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo {
+                font-size: 1.6rem;
+            }
+            
+            .device-icon {
+                font-size: 4rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                BIW Learning
+            </div>
+            <h1>Responsive Learning Management System</h1>
+            <p class="tagline">Designed to work flawlessly across desktops, tablets, and smartphones with an intuitive, accessible interface that promotes engagement and easy navigation.</p>
+        </div>
+    </header>
+
+    <!-- Responsive Showcase -->
+    <section class="showcase-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Responsive Design Showcase</h2>
+                <p>Our LMS adapts seamlessly to any device, ensuring optimal user experience regardless of screen size or orientation.</p>
+            </div>
+
+            <!-- Device Showcase -->
+            <div class="device-showcase">
+                <div class="device">
+                    <div class="device-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="device-name">Desktop</div>
+                    <div class="device-desc">Full-featured experience with advanced tools, multi-column layouts, and comprehensive functionality.</div>
+                </div>
+                
+                <div class="device">
+                    <div class="device-icon">
+                        <i class="fas fa-tablet-alt"></i>
+                    </div>
+                    <div class="device-name">Tablet</div>
+                    <div class="device-desc">Optimized layouts with touch-friendly controls, perfect for learning on the go.</div>
+                </div>
+                
+                <div class="device">
+                    <div class="device-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="device-name">Smartphone</div>
+                    <div class="device-desc">Mobile-first design with simplified navigation and essential features at your fingertips.</div>
+                </div>
+            </div>
+
+            <!-- Responsive Features -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Fluid Layouts</h3>
+                    <p class="feature-desc">Content automatically adjusts and reflows to fit any screen size, from large desktops to small smartphones.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-touch"></i>
+                    </div>
+                    <h3 class="feature-title">Touch-Friendly</h3>
+                    <p class="feature-desc">Interface elements are optimized for touch interaction with appropriate sizing and spacing for fingers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Fast Loading</h3>
+                    <p class="feature-desc">Optimized assets and responsive images ensure fast loading times on all devices and connection speeds.</p>
+                </div>
+            </div>
+
+            <!-- Responsive Layout Demo -->
+            <div class="layout-demo">
+                <div class="demo-header">Responsive Grid Layout</div>
+                <div class="demo-content">
+                    <div class="responsive-grid">
+                        <div class="grid-item">
+                            <i class="fas fa-book-open"></i>
+                            <div class="grid-item-title">Courses</div>
+                            <div class="grid-item-desc">Access all your courses</div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <i class="fas fa-tasks"></i>
+                            <div class="grid-item-title">Assignments</div>
+                            <div class="grid-item-desc">View and submit work</div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <div class="grid-item-title">Progress</div>
+                            <div class="grid-item-desc">Track your learning</div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <i class="fas fa-comments"></i>
+                            <div class="grid-item-title">Discussions</div>
+                            <div class="grid-item-desc">Collaborate with peers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breakpoint Indicators -->
+            <div class="breakpoints">
+                <div class="breakpoint">
+                    <div class="breakpoint-size">> 1200px</div>
+                    <div class="breakpoint-name">Extra Large Devices</div>
+                    <div class="breakpoint-desc">Desktops and large screens with multi-column layouts</div>
+                </div>
+                
+                <div class="breakpoint">
+                    <div class="breakpoint-size">992px - 1200px</div>
+                    <div class="breakpoint-name">Large Devices</div>
+                    <div class="breakpoint-desc">Laptops and medium screens with optimized layouts</div>
+                </div>
+                
+                <div class="breakpoint">
+                    <div class="breakpoint-size">768px - 992px</div>
+                    <div class="breakpoint-name">Tablets</div>
+                    <div class="breakpoint-desc">Tablets in portrait and landscape orientations</div>
+                </div>
+                
+                <div class="breakpoint">
+                    <div class="breakpoint-size">< 768px</div>
+                    <div class="breakpoint-name">Mobile Devices</div>
+                    <div class="breakpoint-desc">Smartphones with single-column, mobile-first design</div>
+                </div>
+            </div>
+
+            <!-- Responsive Navigation Demo -->
+            <div class="nav-demo">
+                <div class="demo-nav">
+                    <div class="demo-logo">LMS Dashboard</div>
+                    <div class="demo-nav-links">
+                        <a href="#">Home</a>
+                        <a href="#">Courses</a>
+                        <a href="#">Grades</a>
+                        <a href="#">Calendar</a>
+                        <a href="#">Messages</a>
+                    </div>
+                    <div class="demo-mobile-nav">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+                
+                <div class="demo-content-area">
+                    <div class="demo-sidebar">
+                        <h4>Navigation</h4>
+                        <p>Sidebar content adapts or collapses on smaller screens</p>
+                    </div>
+                    <div class="demo-main">
+                        <h4>Main Content Area</h4>
+                        <p>This content area adjusts its width based on screen size. On mobile devices, the sidebar is hidden and accessible via a menu button.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="testimonials">
+                <div class="section-title">
+                    <h2>User Experiences</h2>
+                    <p>See how our responsive design improves learning across all devices</p>
+                </div>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"I can seamlessly switch between my laptop during the day and my phone during my commute. The experience is consistent and intuitive on every device."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JS</div>
+                            <div class="author-info">
+                                <h4>Jennifer Smith</h4>
+                                <p>Business Student</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"As an instructor, I appreciate how the LMS adapts to whatever device I'm using. Preparing courses on my tablet is just as easy as on my desktop."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">DR</div>
+                            <div class="author-info">
+                                <h4>Dr. Robert Chen</h4>
+                                <p>Mathematics Professor</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"The mobile interface is so clean and easy to use. I can check assignments, participate in discussions, and watch lectures all from my phone."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ME</div>
+                            <div class="author-info">
+                                <h4>Maria Evans</h4>
+                                <p>Online Learner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <div class="cta-container">
+                    <h2 class="cta-title">Experience Responsive Learning</h2>
+                    <p class="cta-text">Try our LMS on any device and see how seamless learning can be. Access your courses anytime, anywhere.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn">Try Demo on Desktop</a>
+                        <a href="#" class="btn btn-outline">View Mobile Version</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BIW Learning</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">A fully responsive Learning Management System designed for modern education across all devices.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Features</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Responsive Design</a></li>
+                        <li><a href="#">Mobile-First Approach</a></li>
+                        <li><a href="#">Touch Optimization</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">Fast Performance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Devices Supported</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Desktop Computers</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Tablets</a></li>
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Future Devices</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> responsive@biwlms.com</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-globe" style="margin-right: 10px;"></i> https://mirzu-code.github.io/project_biw/</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 BIW Responsive Learning Management System. All rights reserved. | Designed to work flawlessly across desktops, tablets, and smartphones.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation demo
+        const mobileNavBtn = document.querySelector('.demo-mobile-nav');
+        const demoNavLinks = document.querySelector('.demo-nav-links');
+        
+        mobileNavBtn.addEventListener('click', () => {
+            demoNavLinks.style.display = demoNavLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Update year in footer
+        document.querySelector('.copyright p').innerHTML = `&copy; ${new Date().getFullYear()} BIW Responsive Learning Management System. All rights reserved. | Designed to work flawlessly across desktops, tablets, and smartphones.`;
+        
+        // Responsive grid interaction
+        const gridItems = document.querySelectorAll('.grid-item');
+        gridItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.querySelector('.grid-item-title').textContent;
+                alert(`You clicked on "${title}". This feature is fully responsive and works on all devices!`);
+            });
+        });
+        
+        // Show current screen size
+        function showScreenSize() {
+            const width = window.innerWidth;
+            let sizeCategory = '';
+            
+            if (width >= 1200) sizeCategory = 'Extra Large Devices';
+            else if (width >= 992) sizeCategory = 'Large Devices';
+            else if (width >= 768) sizeCategory = 'Tablets';
+            else sizeCategory = 'Mobile Devices';
+            
+            console.log(`Current screen width: ${width}px - ${sizeCategory}`);
+        }
+        
+        // Check screen size on load and resize
+        window.addEventListener('load', showScreenSize);
+        window.addEventListener('resize', showScreenSize);
+    </script>
+</body>
+</html>
