@@ -1,132 +1,233 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Course Enrollment</title>
+<title>Course Enrollment</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f8ff;  
-        margin: 0;
-    }
+body { 
+    font-family: Arial; 
+    background:#d6e6ff;
+}
 
-    header {
-        background-color: #add8e6;   
-        text-align: center;
-        padding: 15px;
-    }
+/* Header */
+header {
+    background:#a7cbea;
+    text-align:center;
+    padding:18px;
+}
 
-    h2 {
-        text-align: center;
-        margin-top: 30px;
-    }
+/* Form Card */
+form { 
+    background:#ffffff; 
+    width:420px; 
+    margin:40px auto; 
+    padding:20px; 
+    border-radius:10px; 
+    border:1px solid #7fa6ff;
+}
 
-    form {
-        background-color: white;
-        width: 380px;
-        margin: 40px auto;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #b7dcee;
-    }
+/* Labels */
+label { 
+    font-weight:bold; 
+    display:block; 
+    margin-top:10px; 
+}
 
-    label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 3px;
-    }
+/* Inputs & Dropdowns */
+input[type="text"],
+input[type="email"],
+select {
+    width:100%;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #8fb2ff;
+    outline:none;
+    margin-top:5px;
+}
 
-    input, select {
-        width: 100%;
-        padding: 10px;
-        margin-top: 6px;
-        box-sizing: border-box;
-        border-radius: 5px;
-        border: 1px solid #b0cde5;
-    }
+/* Improve focus look */
+input:focus,
+select:focus {
+    border-color:#4a7dff;
+    box-shadow:0 0 4px rgba(74,125,255,0.5);
+}
 
-    input[type="radio"] {
-        width: auto;
-    }
+/* Payment options layout */
+.payment-option {
+    margin:6px 0;
+}
 
-    input[type="submit"] {
-        background-color: #87ceeb;
-        border: none;
-        padding: 10px;
-        width: 100%;
-        border-radius: 5px;
-        font-weight: bold;
-        cursor: pointer;
-    }
+/* Hidden areas */
+.hidden { display:none; }
+.free-note { color:green; font-size:14px; }
 
-    .note {
-        font-size: 14px;
-        color: #555;
-    }
+/* Button */
+input[type="submit"] {
+    margin-top:10px;
+    background:#9ed5ff;      
+    color:#000;
+    border:1px solid #7fbfff;
+    padding:12px;
+    width:100%;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:none;         
+}
 
-    a {
-        display: block;
-        text-align: center;
-        margin-top: 15px;
-        color: #4682b4;   
-    }
+input[type="submit"]:hover {
+    background:#8fc8ff;       
+}
+
+/* Back button */
+.back-btn {
+    background:#4a7dff; 
+    color:white; 
+    padding:10px 18px; 
+    border-radius:8px; 
+    text-decoration:none; 
+    display:inline-block;
+}
+.back-btn:hover { background:#3a69e6; }
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>&#11088; Course Enrollment &#11088;</h1>
-    <p>"Work on yourself, for yourself"</p>
+    <h2>&#11088; Course Enrollment &#11088;</h2>
+    
 </header>
 
-<form>
+<form onsubmit="submitForm(event)">
 
-    <label>Full Name:</label>
-    <input type="text" required>
+<label>Full Name:</label>
+<input type="text" required>
 
-    <br><br>
+<label>Email Address:</label>
+<input type="email" required>
 
-    <label>Email Address:</label>
-    <input type="email" required>
+<label>Select Course Code / Faculty:</label>
+<select id="facultySelect" onchange="loadCourses()">
+<option value="">-- Select Faculty / Code --</option>
+<option value="FKAAB">FKAAB</option>
+<option value="FKEE">FKEE</option>
+<option value="FKMP">FKMP</option>
+<option value="FPTP">FPTP</option>
+<option value="FPTV">FPTV</option>
+<option value="FSKTM">FSKTM</option>
+<option value="FAST">FAST</option>
+<option value="FTK">FTK</option>
+<option value="JBS">JBS</option>
+<option value="MSA">MSA</option>
+</select>
 
-    <br><br>
+<label>Select Course:</label>
+<select id="courseSelect" onchange="courseChanged()">
+<option value="">-- Select Course --</option>
+</select>
 
-    <label>Select Course:</label>
-    <select>
-        <option>Web Development 101 (Paid)</option>
-        <option>Data Science Basics (Paid)</option>
-        <option>Graphic Design (Free)</option>
-    </select>
+<p id="freeNote" class="free-note hidden">
+✔ This course is free — no payment needed!
+</p>
 
-    <br><br>
+<div id="paymentArea" class="hidden">
+<label>Payment Method (for Paid Courses):</label>
 
-    <label>Course Type:</label><br> '
-    <input type="radio" name="type"> Free Course<br>
-    <input type="radio" name="type"> Paid Course
+<div class="payment-option">
+<input type="radio" name="payment" value="bank"> Online Banking
+</div>
 
-    <br><br>
+<div class="payment-option">
+<input type="radio" name="payment" value="card"> Credit Card
+</div>
 
-    <label>Payment Method (For Paid Course):</label><br>
-    <input type="radio" name="payment"> Online Banking<br>
-    <input type="radio" name="payment"> Credit Card
+<div class="payment-option">
+<input type="radio" name="payment" value="apple"> Apple Pay
+</div>
 
-    <br><br>
+<div class="payment-option">
+<input type="radio" name="payment" value="tng"> Touch 'n Go
+</div>
 
-    <input type="submit" value="Enroll Now &#128153;">
+<div class="payment-option">
+<input type="radio" name="payment" value="duitnow"> DuitNow QR
+</div>
 
-    <p class="note">
-      
-    </p>
+</div>
+
+<input type="submit" value="Enroll Now &#128153;">
+
+<p style="font-size:14px; color:#555;">
+* Confirmation receipt and enrollment notification will be sent via email.
+</p>
 
 </form>
 
-<a href="index.html">← Back to Courses</a>
+<div style="text-align:center; margin-top:10px;">
+    <a href="index.html" class="back-btn">&#127968; Back to Homepage</a>
+</div>
 
-<br><br>
+
+<script>
+const courseData = {
+    FKAAB:[{name:"Civil Engineering Structures",paid:true},{name:"Environmental Engineering",paid:true},{name:"Construction Technology",paid:false}],
+    FKEE:[{name:"Power Electronics",paid:true},{name:"Circuit Basics",paid:false},{name:"Electrical Machines",paid:true}],
+    FKMP:[{name:"Thermodynamics",paid:true},{name:"Manufacturing Technology",paid:false},{name:"Mechanical Design",paid:true}],
+    FPTP:[{name:"Project Management Basics",paid:false},{name:"Business Analytics",paid:true},{name:"Technology Management",paid:true}],
+    FPTV:[{name:"Technical Education Training",paid:false},{name:"Instructional Design",paid:true},{name:"Teaching Workshop Skills",paid:false}],
+    FSKTM:[{name:"Programming Fundamentals",paid:false},{name:"Software Engineering",paid:true},{name:"Database Systems",paid:true}],
+    FAST:[{name:"Applied Science Lab Skills",paid:false},{name:"Material Science Basics",paid:true},{name:"Physics for Technology",paid:false}],
+    FTK:[{name:"Industrial Technology",paid:true},{name:"Engineering Workshop Skills",paid:false},{name:"Automation Systems",paid:true}],
+    JBS:[{name:"Entrepreneurship Fundamentals",paid:true},{name:"Marketing Essentials",paid:false},{name:"Business Finance",paid:true}],
+    MSA:[{name:"Urban Planning Concepts",paid:true},{name:"Transportation Systems Intro",paid:false},{name:"Smart City Management",paid:true}]
+};
+
+const facultySelect=document.getElementById("facultySelect");
+const courseSelect=document.getElementById("courseSelect");
+const paymentArea=document.getElementById("paymentArea");
+const freeNote=document.getElementById("freeNote");
+
+function loadCourses(){
+    courseSelect.innerHTML=`<option value="">-- Select Course --</option>`;
+    paymentArea.classList.add("hidden");
+    freeNote.classList.add("hidden");
+
+    const faculty=facultySelect.value;
+    if(!courseData[faculty]) return;
+
+    courseData[faculty].forEach(course=>{
+        const opt=document.createElement("option");
+        opt.textContent=course.name+(course.paid?" (Paid)":" (Free)");
+        opt.value=course.paid?"paid":"free";
+        courseSelect.appendChild(opt);
+    });
+}
+
+function courseChanged(){
+    const value=courseSelect.value;
+    const radios=document.getElementsByName("payment");
+
+    if(value==="free"){
+        freeNote.classList.remove("hidden");
+        paymentArea.classList.add("hidden");
+        radios.forEach(r=>{r.checked=false;r.required=false;});
+    } else {
+        freeNote.classList.add("hidden");
+        paymentArea.classList.remove("hidden");
+        radios.forEach(r=>{r.required=true;});
+    }
+}
+
+function submitForm(e){
+    e.preventDefault();
+
+    if(facultySelect.value===""){ alert("Please select a faculty / course code."); return; }
+    if(courseSelect.value===""){ alert("Please select a course."); return; }
+
+    alert("\Enrollment Successful!\nA confirmation email will be sent.");
+}
+</script>
 
 </body>
 </html>
-
-
-
