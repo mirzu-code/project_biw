@@ -1,255 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>UTHM LMS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | UTHM LMS</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-<style>
-* {
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
 
-body {
-    margin: 0;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #333;
-}
+        /* LOGIN CARD */
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            text-align: center;
+        }
 
-/* LOGIN */
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+        .login-container img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
 
-.card {
-    background: rgba(255,255,255,0.95);
-    width: 380px;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-}
+        h2 { margin-bottom: 10px; color: #004aad; }
+        p { font-size: 14px; color: #666; margin-bottom: 20px; }
 
-.card img {
-    width: 90px;
-    display: block;
-    margin: auto;
-}
+        .input-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
 
-h2 {
-    text-align: center;
-    margin: 15px 0;
-}
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #004aad;
+        }
 
-input, button {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
+        input {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
 
-button {
-    background: #004aad;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+        input:focus {
+            border-color: #004aad;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0,74,173,0.2);
+        }
 
-button:hover {
-    background: #003080;
-}
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #004aad;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
 
-.link {
-    text-align: center;
-    margin-top: 10px;
-}
+        button:hover { background: #003080; }
 
-.link a {
-    color: #004aad;
-    cursor: pointer;
-    font-size: 14px;
-}
+        .footer-links {
+            margin-top: 20px;
+            font-size: 13px;
+        }
 
-/* DASHBOARD */
-#dashboard {
-    display: none;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #eef2f3, #cfd9df);
-}
+        .footer-links a {
+            color: #004aad;
+            text-decoration: none;
+            display: block;
+            margin-top: 5px;
+        }
 
-header {
-    background: #004aad;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+        .footer-links a:hover { text-decoration: underline; }
 
-.container {
-    padding: 20px;
-    max-width: 1100px;
-    margin: auto;
-}
+        /* DASHBOARD SECTION (Hidden by default) */
+        #dashboard {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #f0f2f5;
+            overflow-y: auto;
+        }
 
-.box {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-}
+        header {
+            background: linear-gradient(45deg, #e74c3c, #3498db);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-    gap: 20px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-.logout {
-    position: absolute;
-    right: 20px;
-    top: 25px;
-}
-
-.logout a {
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-}
-</style>
+        .content { padding: 20px; max-width: 1000px; margin: auto; }
+        .box { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        
+        /* Grid for dashboard layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    </style>
 </head>
 <body>
 
-<!-- LOGIN -->
-<div class="center" id="login">
-    <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Universiti_Tun_Hussein_Onn_Malaysia_logo.png">
-        <h2>UTHM Student Login</h2>
+<div class="login-container" id="login-view">
+    <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Universiti_Tun_Hussein_Onn_Malaysia_logo.png" alt="UTHM Logo">
+    <h2>Student Login</h2>
+    <p>Please enter your student credentials</p>
 
-        <input id="studentId" placeholder="Student ID">
-        <input id="email" placeholder="Student Email">
-        <input type="password" placeholder="Password">
-        <button onclick="login()">Login</button>
+    <div class="input-group">
+        <i class="fas fa-id-card"></i>
+        <input type="text" id="studentId" placeholder="Student ID (e.g. AI21000)">
+    </div>
 
-        <div class="link">
-            <a onclick="alert('Registration via UTHM system only')">Create Account</a><br>
-            <a onclick="alert('Password reset email sent')">Forgot Password?</a>
-        </div>
-    </div>
+    <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="email" placeholder="Student Email (@student.uthm.edu.my)">
+    </div>
+
+    <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Password">
+    </div>
+
+    <button onclick="handleLogin()">Login to Dashboard</button>
+
+    <div class="footer-links">
+        <a href="index.html">← Back to Homepage</a>
+        <a href="#" onclick="alert('Contact FSKTM Admin for registration')">Create Account</a>
+        <a href="#" onclick="alert('Reset link sent to your student email')">Forgot Password?</a>
+    </div>
 </div>
 
-<!-- DASHBOARD -->
 <div id="dashboard">
-    <header>
-        <h1 id="dashTitle"></h1>
-        <div class="logout">
-            <a onclick="logout()">Logout</a>
-             <a href="index.html" class="btn">logout</a>
-        </div>
-    </header>
+    <header>
+        <h3 id="welcomeMsg">Welcome, Student</h3>
+        <button onclick="logout()" style="width:auto; padding: 5px 15px; background: rgba(255,255,255,0.2);">Logout</button>
+    </header>
 
-    <div class="container">
-        <div class="grid">
+    <div class="content">
+        <div class="dashboard-grid">
+            <div class="box">
+                <h3><i class="fas fa-user-circle"></i> My Profile</h3>
+                <p>Name: <span id="dispName"></span></p>
+                <p>Status: Active</p>
+                <button onclick="alert('Profile Update module coming soon')">Edit Profile</button>
+            </div>
 
-            <!-- PROFILE -->
-            <div class="box">
-                <h3>My Profile</h3>
-                <input id="pName" placeholder="Full Name">
-                <input id="pId" placeholder="Student ID">
-                <input id="pAge" placeholder="Age">
-                <button onclick="updateProfile()">Update Profile</button>
-            </div>
+            <div class="box">
+                <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
+                <ul>
+                    <li>Final Exams: Feb 15th</li>
+                    <li>Library 24/7 access starts Monday</li>
+                </ul>
+            </div>
 
-            <!-- ANNOUNCEMENTS -->
-            <div class="box">
-                <h3>University Announcements</h3>
-                <ul>
-                    <li>📢 Mid-Semester Break: 10–15 Oct</li>
-                    <li>📢 Final Exam Timetable Released</li>
-                    <li>📢 Course Registration Deadline Soon</li>
-                </ul>
-            </div>
-
-            <!-- COURSES -->
-            <div class="box">
-                <h3>Enrolled Courses</h3>
-                <input id="courseName" placeholder="Course Name">
-                <input id="courseCode" placeholder="Subject Code">
-                <input id="courseSection" placeholder="Section">
-                <button onclick="addCourse()">Add Course</button>
-                <ul id="courseList"></ul>
-            </div>
-
-            <!-- QR ATTENDANCE -->
-            <div class="box">
-                <h3>QR Attendance</h3>
-                <p>Scan QR code for attendance</p>
-                <button onclick="startQR()">Start Camera</button>
-                <p id="qrStatus"></p>
-            </div>
-
-        </div>
-    </div>
+            <div class="box">
+                <h3><i class="fas fa-qrcode"></i> Quick Attendance</h3>
+                <button onclick="alert('Camera Initializing...')">Scan Class QR</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 <script>
-let userName = "";
+    function handleLogin() {
+        const email = document.getElementById('email').value;
+        const studentId = document.getElementById('studentId').value;
 
-function login() {
-    const id = document.getElementById("studentId").value;
-    const email = document.getElementById("email").value;
+        // Validation
+        if (!email.endsWith("@student.uthm.edu.my")) {
+            alert("Please use your official @student.uthm.edu.my email.");
+            return;
+        }
 
-    if (!email.endsWith("@student.uthm.edu.my")) {
-        alert("Only UTHM student email allowed");
-        return;
-    }
+        if (studentId === "" || email === "") {
+            alert("Please fill in all fields.");
+            return;
+        }
 
-    userName = email.split("@")[0];
-    document.getElementById("login").style.display = "none";
-    document.getElementById("dashboard").style.display = "block";
-    document.getElementById("dashTitle").innerText = userName.toUpperCase() + "'S DASHBOARD";
-}
+        // Logic to switch views
+        const userName = email.split('@')[0].toUpperCase();
+        document.getElementById('login-view').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        document.getElementById('welcomeMsg').innerText = "Dashboard: " + userName;
+        document.getElementById('dispName').innerText = userName;
+    }
 
-function logout() {
-    location.reload();
-}
-
-function updateProfile() {
-    alert("Profile updated successfully");
-}
-
-function addCourse() {
-    const name = courseName.value;
-    const code = courseCode.value;
-    const section = courseSection.value;
-
-    if (!name || !code || !section) return;
-
-    const li = document.createElement("li");
-    li.innerText = `${name} (${code}) - Section ${section}`;
-    courseList.appendChild(li);
-
-    courseName.value = "";
-    courseCode.value = "";
-    courseSection.value = "";
-}
-
-function startQR() {
-    document.getElementById("qrStatus").innerText =
-        "📷 Camera activated (QR scan simulated)";
-}
+    function logout() {
+        // Redirect back to index.html
+        window.location.href = "index.html";
+    }
 </script>
 
 </body>
 </html>
-
