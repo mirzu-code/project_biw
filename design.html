@@ -47,7 +47,7 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, #e74c3c, #3498db);
             color: white;
             padding: 80px 0 60px;
             text-align: center;
@@ -150,52 +150,6 @@
             margin: 0 auto;
         }
 
-        /* Responsive Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 80px;
-        }
-
-        .feature-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 35px 30px;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: rgba(67, 97, 238, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin: 0 auto 25px;
-        }
-
-        .feature-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .feature-desc {
-            color: var(--gray);
-            line-height: 1.7;
-        }
 
         /* Responsive Layout Demo */
         .layout-demo {
@@ -286,187 +240,6 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Navigation Demo */
-        .nav-demo {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            box-shadow: var(--box-shadow);
-            margin-bottom: 80px;
-        }
-
-        .demo-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--gray-light);
-        }
-
-        .demo-logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .demo-nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .demo-nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .demo-nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .demo-mobile-nav {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--primary);
-            cursor: pointer;
-        }
-
-        .demo-content-area {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 30px;
-        }
-
-        .demo-sidebar {
-            background-color: var(--gray-light);
-            border-radius: var(--border-radius);
-            padding: 25px;
-        }
-
-        .demo-main {
-            background-color: var(--gray-light);
-            border-radius: var(--border-radius);
-            padding: 25px;
-            min-height: 300px;
-        }
-
-        /* Responsive Testimonials */
-        .testimonials {
-            margin-bottom: 80px;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--box-shadow);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: var(--dark);
-            line-height: 1.7;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-
-        .author-info h4 {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .author-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Call to Action */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            border-radius: var(--border-radius);
-            margin-bottom: 80px;
-        }
-
-        .cta-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .cta-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-text {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background-color: white;
-            color: var(--primary);
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background-color: white;
-            color: var(--primary);
-        }
 
         /* Footer */
         footer {
@@ -671,6 +444,40 @@
                 <p>Our LMS adapts seamlessly to any device, ensuring optimal user experience regardless of screen size or orientation.</p>
             </div>
 
+            <!-- Responsive Layout Demo -->
+            <div class="layout-demo">
+                <div class="demo-header">Responsive Grid Layout</div>
+                <div class="demo-content">
+                    <div class="responsive-grid">
+                        <div class="grid-item">
+                            <i class="fas fa-book-open"></i>
+                            <div class="grid-item-title">Courses</div>
+                            <div class="grid-item-desc">Access all your courses</div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <i class="fas fa-tasks"></i>
+                            <div class="grid-item-title">Assignments</div>
+                            <div class="grid-item-desc">View and submit work</div>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <div class="grid-item-title">Progress</div>
+                            <div class="grid-item-desc">Track your learning</div><br>
+                            <a href="progress.html" class="btn">Track your learning</a>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <i class="fas fa-comments"></i>
+                            <div class="grid-item-title">Discussions</div>
+                            <div class="grid-item-desc">Collaborate with peers</div><br>
+                            <a href="Community.html" class="btn">Community Section</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Device Showcase -->
             <div class="device-showcase">
                 <div class="device">
@@ -695,65 +502,6 @@
                     </div>
                     <div class="device-name">Smartphone</div>
                     <div class="device-desc">Mobile-first design with simplified navigation and essential features at your fingertips.</div>
-                </div>
-            </div>
-
-            <!-- Responsive Features -->
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-compress-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Fluid Layouts</h3>
-                    <p class="feature-desc">Content automatically adjusts and reflows to fit any screen size, from large desktops to small smartphones.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-touch"></i>
-                    </div>
-                    <h3 class="feature-title">Touch-Friendly</h3>
-                    <p class="feature-desc">Interface elements are optimized for touch interaction with appropriate sizing and spacing for fingers.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3 class="feature-title">Fast Loading</h3>
-                    <p class="feature-desc">Optimized assets and responsive images ensure fast loading times on all devices and connection speeds.</p>
-                </div>
-            </div>
-
-            <!-- Responsive Layout Demo -->
-            <div class="layout-demo">
-                <div class="demo-header">Responsive Grid Layout</div>
-                <div class="demo-content">
-                    <div class="responsive-grid">
-                        <div class="grid-item">
-                            <i class="fas fa-book-open"></i>
-                            <div class="grid-item-title">Courses</div>
-                            <div class="grid-item-desc">Access all your courses</div>
-                        </div>
-                        
-                        <div class="grid-item">
-                            <i class="fas fa-tasks"></i>
-                            <div class="grid-item-title">Assignments</div>
-                            <div class="grid-item-desc">View and submit work</div>
-                        </div>
-                        
-                        <div class="grid-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <div class="grid-item-title">Progress</div>
-                            <div class="grid-item-desc">Track your learning</div>
-                        </div>
-                        
-                        <div class="grid-item">
-                            <i class="fas fa-comments"></i>
-                            <div class="grid-item-title">Discussions</div>
-                            <div class="grid-item-desc">Collaborate with peers</div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -784,91 +532,7 @@
                 </div>
             </div>
 
-            <!-- Responsive Navigation Demo -->
-            <div class="nav-demo">
-                <div class="demo-nav">
-                    <div class="demo-logo">LMS Dashboard</div>
-                    <div class="demo-nav-links">
-                        <a href="#">Home</a>
-                        <a href="#">Courses</a>
-                        <a href="#">Grades</a>
-                        <a href="#">Calendar</a>
-                        <a href="#">Messages</a>
-                    </div>
-                    <div class="demo-mobile-nav">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                </div>
-                
-                <div class="demo-content-area">
-                    <div class="demo-sidebar">
-                        <h4>Navigation</h4>
-                        <p>Sidebar content adapts or collapses on smaller screens</p>
-                    </div>
-                    <div class="demo-main">
-                        <h4>Main Content Area</h4>
-                        <p>This content area adjusts its width based on screen size. On mobile devices, the sidebar is hidden and accessible via a menu button.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonials -->
-            <div class="testimonials">
-                <div class="section-title">
-                    <h2>User Experiences</h2>
-                    <p>See how our responsive design improves learning across all devices</p>
-                </div>
-                
-                <div class="testimonial-grid">
-                    <div class="testimonial">
-                        <p class="testimonial-text">"I can seamlessly switch between my laptop during the day and my phone during my commute. The experience is consistent and intuitive on every device."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">JS</div>
-                            <div class="author-info">
-                                <h4>Jennifer Smith</h4>
-                                <p>Business Student</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial">
-                        <p class="testimonial-text">"As an instructor, I appreciate how the LMS adapts to whatever device I'm using. Preparing courses on my tablet is just as easy as on my desktop."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">DR</div>
-                            <div class="author-info">
-                                <h4>Dr. Robert Chen</h4>
-                                <p>Mathematics Professor</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial">
-                        <p class="testimonial-text">"The mobile interface is so clean and easy to use. I can check assignments, participate in discussions, and watch lectures all from my phone."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">ME</div>
-                            <div class="author-info">
-                                <h4>Maria Evans</h4>
-                                <p>Online Learner</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div class="cta-section">
-                <div class="cta-container">
-                    <h2 class="cta-title">Experience Responsive Learning</h2>
-                    <p class="cta-text">Try our LMS on any device and see how seamless learning can be. Access your courses anytime, anywhere.</p>
-                    <div class="cta-buttons">
-                        <a href="#" class="btn">Try Demo on Desktop</a>
-                        <a href="#" class="btn btn-outline">View Mobile Version</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+            
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -902,8 +566,9 @@
                 <div class="footer-column">
                     <h3>Contact</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> responsive@biwlms.com</li>
-                        <li><i class="fas fa-globe" style="margin-right: 10px;"></i> https://mirzu-code.github.io/project_biw/</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +607-453 7000</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> fsktm@uthm.edu.my</li>
+                        <li><i class="fas fa-globe" style="margin-right: 10px;"></i> https://www.uthm.edu.my</li>
                     </ul>
                 </div>
             </div>
@@ -953,5 +618,4 @@
         window.addEventListener('resize', showScreenSize);
     </script>
 </body>
-
 </html>
