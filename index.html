@@ -1,850 +1,1547 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <title>LMS | Learn Anything</title>
+
 <style>
+
     body { font-family: sans-serif; line-height: 1.6; margin: 0; color: #333; }
+
     header { background: linear-gradient(45deg, #e74c3c, #3498db); color: white; padding: 1rem; text-align: center; }
+
     header nav a { color: white; text-decoration: none; margin-left: 20px; }
+
     header img { vertical-align: middle; }
 
+
+
     /* Hero section */
+
     .hero {
+
         background-image: url('UTHM.png');
+
         background-size: cover;
+
         background-position: center;
+
         padding: 4rem 2rem;
+
         text-align: center;
+
         color: white;
+
         animation: heroBg 12s infinite;
+
     }
+
+
 
     /* Buttons */
+
     .btn { background: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 5px; transition: transform 0.3s, box-shadow 0.3s, background 0.3s; }
+
     .btn.green { background: #27ae60; }
+
     .btn.green:hover { background: #229954; }
 
+
+
     /* Sections */
+
     .section { padding: 2rem; max-width: 1000px; margin: auto; }
 
+
+
     /* Carousel */
+
     .grid { display: flex; gap: 20px; transition: transform 0.5s ease; }
+
     .carousel-container { overflow: hidden; width: calc(30% * 3 + 20px * 2); margin: auto; position: relative; }
+
     .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: #3498db; color: white; border: none; padding: 10px; cursor: pointer; z-index: 1; border-radius: 50%; font-weight: bold; font-size: 18px; }
+
     .arrow.left { left: 10px; }
+
     .arrow.right { right: 10px; }
+
     .card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; width: 30%; flex-shrink: 0; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+
     .card:hover { transform: scale(1.05); box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
 
+
+
     /* Hero background animation */
+
     @keyframes heroBg {
+
         0%   { background-image: url('UTHM.png'); }
+
         25%  { background-image: url('uthm dsi.png'); }
+
         50%  { background-image: url('uthm pagoh.png'); }
+
         75%  { background-image: url('gate uthm.png'); }
+
         100% { background-image: url('UTHM.png'); }
+
     }
 
+
+
     /* Student Review */
+
     .review { padding: 2rem; max-width: 1000px; margin: auto; background: #f0f2f5; border-radius: 8px; margin-bottom: 2rem; }
+
     .review blockquote { font-style: italic; margin: 0; }
+
     .review strong { font-weight: bold; }
+
 </style>
+
 </head>
+
 <body>
 
+
+
 <header>
+
     <div>
-        <img src="UTHM_LOGO-removebg-preview.png" alt="UTHM Logo" style="width:70px; height:auto; margin-right:10px;">
+
+        <img src="UTHM_LOGO-removebg-preview.png" alt="UTHM Logo" style="width:180px; height:auto; margin-right:10px;">
+
         <h1 style="display:inline;">UTHM HOMEPAGE</h1>
+
     </div>
+
     <nav>
+
         <a href="catalog-FKAAB.html">FKAAB</a>
+
         <a href="catalog-FKEE.html">FKEE</a>
+
         <a href="catalog-FKMP.html">FKMP</a>
+
         <a href="catalog-FPTP.html">FPTP</a>
+
         <a href="catalog-FPTV.html">FPTV</a>
+
         <a href="catalog-FSKTM.html">FSKTM</a>
+
         <a href="catalog-FAST.html">FAST</a>
+
         <a href="catalog-FTK.html">FTK</a>
+
         <a href="catalog-JBS.html">JBS</a>
+
         <a href="catalog-MSA.html">MSA</a>
+
     </nav>
+
 </header>
 
+
+
 <section class="hero">
+
     <h2>Unlock Your Potential With Us</h2>
+
     <p>With Wisdom We Explore.</p><br>
+
     <a href="catalog.html" class="btn">Browse Courses</a>
+
     <a href="dashboard_authentication.html" class="btn green">Sign In</a>
+
     <a href="signup.html" class="btn green">Sign Up</a>
+
 </section>
+
+
 
 <section class="section">
+
     <h3>Featured Courses</h3>
+
     <div class="carousel-container">
+
         <button class="arrow left" id="prev">&lt;</button>
+
         <div class="grid" id="carousel">
+
             <div class="card" onclick="window.location.href='catalog-FKAAB.html'"><h4>Civil Engineering And Built Environment</h4><p>Learn about structures, construction, and environmental engineering.</p></div>
+
             <div class="card" onclick="window.location.href='catalog-FKEE.html'"><h4>Electric And Electronic Engineering</h4><p>Explore electrical systems, electronics, and power engineering.</p></div>
+
             <div class="card" onclick="window.location.href='catalog-FKMP.html'"><h4>Mechanical And Manufacturing Engineering</h4><p>Study mechanics, manufacturing processes, and industrial engineering.</p></div>
+
             <div class="card" onclick="window.location.href='catalog-FPTP.html'"><h4>Technology Management And Business</h4><p>Discover technology management, business strategies, and innovation.</p></div>
+
             <div class="card" onclick="window.location.href='catalog-FPTV.html'"><h4>Technical And Vocational Education</h4><p>Gain skills in technical education, vocational training, and career development.</p></div>
+
             <div class="card" onclick="window.location.href='catalog-FSKTM.html'"><h4>Computer Science And Information Technology</h4><p>Dive into programming, software development, and IT solutions.</p></div>
+
             <div class="card" onclick="window.location.href='catalog-FAST.html'"><h4>Applied Sciences And Technology</h4><p>Apply scientific principles to technology and real-world problems.</p></div>
+
             <div class="card" onclick="window.location.href='catalog-FTK.html'"><h4>Engineering Technology</h4><p>Focus on engineering applications, design, and technological advancements.</p></div>
+
             <div class="card" onclick="window.location.href='catalog-JBS.html'"><h4>Johor Business School</h4><p>Learn business administration, management, and entrepreneurial skills.</p></div>
+
             <div class="card" onclick="window.location.href='catalog-MSA.html'"><h4>Metro System Academy</h4><p>Explore urban planning, transportation systems, and metropolitan studies.</p></div>
+
         </div>
+
         <button class="arrow right" id="next">&gt;</button>
+
     </div>
+
 </section>
+
     
+
 <!-- Student Review Section at bottom -->
+
 <section class="review">
+
     <h3>What Our Students Say</h3>
+
     <blockquote>"This platform changed my career. The instructors are top-notch!" - <strong>Alex J.</strong></blockquote>
+
 </section>
+
+
 
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Responsive LMS Design | BIW</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
     <style>
+
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
         }
+
+
 
         :root {
+
             --primary: #4361ee;
+
             --primary-dark: #3a56d4;
+
             --secondary: #7209b7;
+
             --accent: #f72585;
+
             --light: #f8f9fa;
+
             --dark: #212529;
+
             --gray: #6c757d;
+
             --gray-light: #e9ecef;
+
             --success: #4cc9f0;
+
             --warning: #f8961e;
+
             --danger: #f94144;
+
             --border-radius: 10px;
+
             --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
             --transition: all 0.3s ease;
+
         }
+
+
 
         body {
+
             font-family: 'Poppins', sans-serif;
+
             line-height: 1.6;
+
             color: var(--dark);
+
             background-color: #f5f7ff;
+
             min-height: 100vh;
+
         }
+
+
 
         .container {
+
             width: 100%;
+
             max-width: 1400px;
+
             margin: 0 auto;
+
             padding: 0 20px;
+
         }
+
+
 
         /* Header */
+
         header {
+
             background: linear-gradient(45deg, #e74c3c, #3498db);
+
             color: white;
+
             padding: 80px 0 60px;
+
             text-align: center;
+
         }
+
+
 
         .header-container {
+
             max-width: 800px;
+
             margin: 0 auto;
+
         }
+
+
 
         .logo {
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             gap: 12px;
+
             font-size: 2rem;
+
             font-weight: 700;
+
             margin-bottom: 20px;
+
         }
+
+
 
         .logo i {
+
             color: var(--accent);
+
         }
+
+
 
         h1 {
+
             font-size: 2.8rem;
+
             margin-bottom: 15px;
+
             line-height: 1.2;
+
         }
+
+
 
         .tagline {
+
             font-size: 1.2rem;
+
             opacity: 0.9;
+
             max-width: 700px;
+
             margin: 0 auto 30px;
+
         }
+
+
 
         /* Responsive Showcase Section */
+
         .showcase-section {
+
             padding: 80px 0;
+
         }
+
+
 
         .section-title {
+
             text-align: center;
+
             margin-bottom: 60px;
+
         }
+
+
 
         .section-title h2 {
+
             font-size: 2.5rem;
+
             color: var(--primary);
+
             margin-bottom: 15px;
+
         }
+
+
 
         .section-title p {
+
             color: var(--gray);
+
             max-width: 700px;
+
             margin: 0 auto;
+
             font-size: 1.1rem;
+
         }
+
+
 
         /* Device Showcase */
+
         .device-showcase {
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             gap: 60px;
+
             margin-bottom: 80px;
+
             flex-wrap: wrap;
+
         }
+
+
 
         .device {
+
             text-align: center;
+
             transition: var(--transition);
+
             padding: 20px;
+
             border-radius: var(--border-radius);
+
         }
+
+
 
         .device:hover {
+
             transform: translateY(-10px);
+
             background-color: white;
+
             box-shadow: var(--box-shadow);
+
         }
+
+
 
         .device-icon {
+
             font-size: 6rem;
+
             color: var(--primary);
+
             margin-bottom: 20px;
+
         }
+
+
 
         .device-name {
+
             font-size: 1.5rem;
+
             font-weight: 600;
+
             margin-bottom: 10px;
+
             color: var(--dark);
+
         }
 
+
+
         .device-desc {
+
             color: var(--gray);
+
             max-width: 250px;
+
             margin: 0 auto;
+
         }
+
+
+
 
 
         /* Responsive Layout Demo */
+
         .layout-demo {
+
             background-color: white;
+
             border-radius: var(--border-radius);
+
             overflow: hidden;
+
             box-shadow: var(--box-shadow);
+
             margin-bottom: 80px;
+
         }
+
+
 
         .demo-header {
+
             background-color: var(--primary);
+
             color: white;
+
             padding: 20px;
+
             text-align: center;
+
             font-weight: 600;
+
             font-size: 1.2rem;
+
         }
+
+
 
         .demo-content {
+
             padding: 40px;
+
         }
+
+
 
         .responsive-grid {
+
             display: grid;
+
             grid-template-columns: repeat(4, 1fr);
+
             gap: 20px;
+
         }
+
+
 
         .grid-item {
+
             background-color: var(--gray-light);
+
             padding: 25px;
+
             border-radius: var(--border-radius);
+
             text-align: center;
+
             transition: var(--transition);
+
         }
+
+
 
         .grid-item:hover {
+
             background-color: rgba(67, 97, 238, 0.1);
+
         }
+
+
 
         .grid-item i {
+
             font-size: 2rem;
+
             color: var(--primary);
+
             margin-bottom: 15px;
+
         }
+
+
 
         .grid-item-title {
+
             font-weight: 600;
+
             margin-bottom: 10px;
+
         }
+
+
 
         /* Breakpoint Indicators */
+
         .breakpoints {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             background-color: white;
+
             border-radius: var(--border-radius);
+
             padding: 30px;
+
             box-shadow: var(--box-shadow);
+
             margin-bottom: 80px;
+
             flex-wrap: wrap;
+
             gap: 20px;
+
         }
+
+
 
         .breakpoint {
+
             text-align: center;
+
             flex: 1;
+
             min-width: 200px;
+
         }
+
+
 
         .breakpoint-size {
+
             font-size: 1.8rem;
+
             font-weight: 700;
+
             color: var(--primary);
+
             margin-bottom: 10px;
+
         }
+
+
 
         .breakpoint-name {
+
             font-weight: 600;
+
             margin-bottom: 8px;
+
             color: var(--dark);
+
         }
 
+
+
         .breakpoint-desc {
+
             color: var(--gray);
+
             font-size: 0.9rem;
+
         }
+
+
+
 
 
         /* Footer */
+
         footer {
+
             background-color: var(--dark);
+
             color: white;
+
             padding: 60px 0 30px;
+
         }
+
+
 
         .footer-content {
+
             display: grid;
+
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
             gap: 40px;
+
             margin-bottom: 40px;
+
         }
+
+
 
         .footer-column h3 {
+
             font-size: 1.3rem;
+
             margin-bottom: 25px;
+
             color: white;
+
         }
+
+
 
         .footer-links {
+
             list-style: none;
+
         }
+
+
 
         .footer-links li {
+
             margin-bottom: 12px;
+
         }
+
+
 
         .footer-links a {
+
             color: rgba(255, 255, 255, 0.7);
+
             text-decoration: none;
+
             transition: var(--transition);
+
         }
+
+
 
         .footer-links a:hover {
+
             color: white;
+
             padding-left: 5px;
+
         }
+
+
 
         .copyright {
+
             text-align: center;
+
             padding-top: 30px;
+
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+
             color: rgba(255, 255, 255, 0.6);
+
             font-size: 0.9rem;
+
         }
+
+
 
         /* Responsive Breakpoints */
+
         @media (max-width: 1200px) {
+
             .device-showcase {
+
                 gap: 40px;
+
             }
+
             
+
             .device-icon {
+
                 font-size: 5rem;
+
             }
+
         }
+
+
 
         @media (max-width: 992px) {
+
             h1 {
+
                 font-size: 2.4rem;
+
             }
+
             
+
             .section-title h2 {
+
                 font-size: 2.2rem;
+
             }
+
             
+
             .responsive-grid {
+
                 grid-template-columns: repeat(2, 1fr);
+
             }
+
             
+
             .demo-content-area {
+
                 grid-template-columns: 1fr;
+
             }
+
             
+
             .demo-sidebar {
+
                 display: none;
+
             }
+
         }
+
+
 
         @media (max-width: 768px) {
+
             header {
+
                 padding: 60px 0 40px;
+
             }
+
             
+
             h1 {
+
                 font-size: 2rem;
+
             }
+
             
+
             .tagline {
+
                 font-size: 1.1rem;
+
             }
+
             
+
             .device-showcase {
+
                 flex-direction: column;
+
                 gap: 40px;
+
             }
+
             
+
             .device {
+
                 width: 100%;
+
                 max-width: 300px;
+
             }
+
             
+
             .demo-nav-links {
+
                 display: none;
+
             }
+
             
+
             .demo-mobile-nav {
+
                 display: block;
+
             }
+
             
+
             .breakpoints {
+
                 flex-direction: column;
+
                 align-items: flex-start;
+
                 gap: 30px;
+
             }
+
             
+
             .breakpoint {
+
                 text-align: left;
+
                 width: 100%;
+
             }
+
             
+
             .cta-buttons {
+
                 flex-direction: column;
+
                 align-items: center;
+
             }
+
             
+
             .btn {
+
                 width: 100%;
+
                 max-width: 300px;
+
             }
+
         }
+
+
 
         @media (max-width: 576px) {
+
             .container {
+
                 padding: 0 15px;
+
             }
+
             
+
             .showcase-section {
+
                 padding: 60px 0;
+
             }
+
             
+
             h1 {
+
                 font-size: 1.8rem;
+
             }
+
             
+
             .section-title h2 {
+
                 font-size: 1.8rem;
+
             }
+
             
+
             .feature-card, .testimonial, .nav-demo {
+
                 padding: 25px 20px;
+
             }
+
             
+
             .responsive-grid {
+
                 grid-template-columns: 1fr;
+
             }
+
             
+
             .features-grid {
+
                 grid-template-columns: 1fr;
+
             }
+
             
+
             .testimonial-grid {
+
                 grid-template-columns: 1fr;
+
             }
+
         }
+
+
 
         @media (max-width: 400px) {
+
             .logo {
+
                 font-size: 1.6rem;
+
             }
+
             
+
             .device-icon {
+
                 font-size: 4rem;
+
             }
+
             
+
             .cta-title {
+
                 font-size: 2rem;
+
             }
+
         }
+
     </style>
+
 </head>
+
 <body>
+
     <!-- Header -->
+
     <header>
+
         <div class="container header-container">
+
             <div class="logo">
+
                 <i class="fas fa-graduation-cap"></i>
+
                 BIW Learning
+
             </div>
+
             <h1>Responsive Learning Management System</h1>
+
             <p class="tagline">Designed to work flawlessly across desktops, tablets, and smartphones with an intuitive, accessible interface that promotes engagement and easy navigation.</p>
+
         </div>
+
     </header>
 
+
+
     <!-- Responsive Showcase -->
+
     <section class="showcase-section">
+
         <div class="container">
+
             <div class="section-title">
+
                 <h2>Responsive Design Showcase</h2>
+
                 <p>Our LMS adapts seamlessly to any device, ensuring optimal user experience regardless of screen size or orientation.</p>
+
             </div>
 
-            <!-- Device Showcase -->
-            <div class="device-showcase">
-                <div class="device">
-                    <div class="device-icon">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <div class="device-name">Desktop</div>
-                    <div class="device-desc">Full-featured experience with advanced tools, multi-column layouts, and comprehensive functionality.</div>
-                </div>
-                
-                <div class="device">
-                    <div class="device-icon">
-                        <i class="fas fa-tablet-alt"></i>
-                    </div>
-                    <div class="device-name">Tablet</div>
-                    <div class="device-desc">Optimized layouts with touch-friendly controls, perfect for learning on the go.</div>
-                </div>
-                
-                <div class="device">
-                    <div class="device-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="device-name">Smartphone</div>
-                    <div class="device-desc">Mobile-first design with simplified navigation and essential features at your fingertips.</div>
-                </div>
-            </div>
+
 
             <!-- Responsive Layout Demo -->
+
             <div class="layout-demo">
+
                 <div class="demo-header">Responsive Grid Layout</div>
+
                 <div class="demo-content">
+
                     <div class="responsive-grid">
+
                         <div class="grid-item">
+
                             <i class="fas fa-book-open"></i>
+
                             <div class="grid-item-title">Courses</div>
+
                             <div class="grid-item-desc">Access all your courses</div>
+
                         </div>
+
                         
+
                         <div class="grid-item">
+
                             <i class="fas fa-tasks"></i>
+
                             <div class="grid-item-title">Assignments</div>
+
                             <div class="grid-item-desc">View and submit work</div>
+
                         </div>
+
                         
+
                         <div class="grid-item">
+
                             <i class="fas fa-chart-bar"></i>
+
                             <div class="grid-item-title">Progress</div>
+
                             <div class="grid-item-desc">Track your learning</div><br>
+
                             <a href="progress.html" class="btn">Track your learning</a>
+
                         </div>
+
                         
+
                         <div class="grid-item">
+
                             <i class="fas fa-comments"></i>
+
                             <div class="grid-item-title">Discussions</div>
+
                             <div class="grid-item-desc">Collaborate with peers</div><br>
+
                             <a href="Community.html" class="btn">Community Section</a>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
+            
+
+            <!-- Device Showcase -->
+
+            <div class="device-showcase">
+
+                <div class="device">
+
+                    <div class="device-icon">
+
+                        <i class="fas fa-desktop"></i>
+
+                    </div>
+
+                    <div class="device-name">Desktop</div>
+
+                    <div class="device-desc">Full-featured experience with advanced tools, multi-column layouts, and comprehensive functionality.</div>
+
+                </div>
+
+                
+
+                <div class="device">
+
+                    <div class="device-icon">
+
+                        <i class="fas fa-tablet-alt"></i>
+
+                    </div>
+
+                    <div class="device-name">Tablet</div>
+
+                    <div class="device-desc">Optimized layouts with touch-friendly controls, perfect for learning on the go.</div>
+
+                </div>
+
+                
+
+                <div class="device">
+
+                    <div class="device-icon">
+
+                        <i class="fas fa-mobile-alt"></i>
+
+                    </div>
+
+                    <div class="device-name">Smartphone</div>
+
+                    <div class="device-desc">Mobile-first design with simplified navigation and essential features at your fingertips.</div>
+
+                </div>
+
+            </div>
+
+
 
             <!-- Breakpoint Indicators -->
+
             <div class="breakpoints">
+
                 <div class="breakpoint">
+
                     <div class="breakpoint-size">> 1200px</div>
+
                     <div class="breakpoint-name">Extra Large Devices</div>
+
                     <div class="breakpoint-desc">Desktops and large screens with multi-column layouts</div>
+
                 </div>
+
                 
+
                 <div class="breakpoint">
+
                     <div class="breakpoint-size">992px - 1200px</div>
+
                     <div class="breakpoint-name">Large Devices</div>
+
                     <div class="breakpoint-desc">Laptops and medium screens with optimized layouts</div>
+
                 </div>
+
                 
+
                 <div class="breakpoint">
+
                     <div class="breakpoint-size">768px - 992px</div>
+
                     <div class="breakpoint-name">Tablets</div>
+
                     <div class="breakpoint-desc">Tablets in portrait and landscape orientations</div>
+
                 </div>
+
                 
+
                 <div class="breakpoint">
+
                     <div class="breakpoint-size">< 768px</div>
+
                     <div class="breakpoint-name">Mobile Devices</div>
+
                     <div class="breakpoint-desc">Smartphones with single-column, mobile-first design</div>
+
                 </div>
+
+            </div>
+
+
+
+            
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-column">
+
+                    <h3>BIW Learning</h3>
+
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">A fully responsive Learning Management System designed for modern education across all devices.</p>
+
+                </div>
+
+                
+
+                <div class="footer-column">
+
+                    <h3>Features</h3>
+
+                    <ul class="footer-links">
+
+                        <li><a href="#">Responsive Design</a></li>
+
+                        <li><a href="#">Mobile-First Approach</a></li>
+
+                        <li><a href="#">Touch Optimization</a></li>
+
+                        <li><a href="#">Accessibility</a></li>
+
+                        <li><a href="#">Fast Performance</a></li>
+
+                    </ul>
+
+                </div>
+
+                
+
+                <div class="footer-column">
+
+                    <h3>Devices Supported</h3>
+
+                    <ul class="footer-links">
+
+                        <li><a href="#">Desktop Computers</a></li>
+
+                        <li><a href="#">Laptops</a></li>
+
+                        <li><a href="#">Tablets</a></li>
+
+                        <li><a href="#">Smartphones</a></li>
+
+                    </ul>
+
+                </div>
+
+                
+
+                <div class="footer-column">
+
+                    <h3>Contact</h3>
+
+                    <ul class="footer-links">
+
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +607-453 7000</li>
+
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> fsktm@uthm.edu.my</li>
+
+                        <li><i class="fas fa-globe" style="margin-right: 10px;"></i> https://www.uthm.edu.my</li>
+
+                    </ul>
+
+                </div>
+
             </div>
 
             
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>BIW Learning</h3>
-                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">A fully responsive Learning Management System designed for modern education across all devices.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Features</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Responsive Design</a></li>
-                        <li><a href="#">Mobile-First Approach</a></li>
-                        <li><a href="#">Touch Optimization</a></li>
-                        <li><a href="#">Accessibility</a></li>
-                        <li><a href="#">Fast Performance</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Devices Supported</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Desktop Computers</a></li>
-                        <li><a href="#">Laptops</a></li>
-                        <li><a href="#">Tablets</a></li>
-                        <li><a href="#">Smartphones</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> responsive@biwlms.com</li>
-                        <li><i class="fas fa-globe" style="margin-right: 10px;"></i> https://mirzu-code.github.io/project_biw/</li>
-                    </ul>
-                </div>
-            </div>
-            
+
             <div class="copyright">
+
                 <p>&copy; 2026 BIW Responsive Learning Management System. All rights reserved. | Designed to work flawlessly across desktops, tablets, and smartphones.</p>
+
             </div>
+
         </div>
+
     </footer>
 
+
+
     <script>
+
         // Mobile navigation demo
+
         const mobileNavBtn = document.querySelector('.demo-mobile-nav');
+
         const demoNavLinks = document.querySelector('.demo-nav-links');
+
         
+
         mobileNavBtn.addEventListener('click', () => {
+
             demoNavLinks.style.display = demoNavLinks.style.display === 'flex' ? 'none' : 'flex';
+
         });
+
         
+
         // Update year in footer
+
         document.querySelector('.copyright p').innerHTML = `&copy; ${new Date().getFullYear()} BIW Responsive Learning Management System. All rights reserved. | Designed to work flawlessly across desktops, tablets, and smartphones.`;
+
         
+
         // Responsive grid interaction
+
         const gridItems = document.querySelectorAll('.grid-item');
+
         gridItems.forEach(item => {
+
             item.addEventListener('click', () => {
+
                 const title = item.querySelector('.grid-item-title').textContent;
+
                 alert(`You clicked on "${title}". This feature is fully responsive and works on all devices!`);
+
             });
+
         });
+
         
+
         // Show current screen size
+
         function showScreenSize() {
+
             const width = window.innerWidth;
+
             let sizeCategory = '';
+
             
+
             if (width >= 1200) sizeCategory = 'Extra Large Devices';
+
             else if (width >= 992) sizeCategory = 'Large Devices';
+
             else if (width >= 768) sizeCategory = 'Tablets';
+
             else sizeCategory = 'Mobile Devices';
+
             
+
             console.log(`Current screen width: ${width}px - ${sizeCategory}`);
+
         }
+
         
+
         // Check screen size on load and resize
+
         window.addEventListener('load', showScreenSize);
+
         window.addEventListener('resize', showScreenSize);
+
     </script>
+
 </body>
+
 </html>
 
+
+
 <script>
+
 const carousel = document.getElementById('carousel');
+
 const cards = Array.from(carousel.children);
+
 const cardWidth = cards[0].offsetWidth + 20; // include gap
+
 let scrollPosition = 0;
 
+
+
 // Clone all cards for infinite scroll
+
 cards.forEach(card => {
+
     const clone = card.cloneNode(true);
+
     carousel.appendChild(clone);
+
 });
+
+
 
 // Auto-scroll
+
 let animationFrame;
+
 function autoScroll() {
+
     scrollPosition += 1; // speed
+
     if(scrollPosition >= cardWidth * cards.length) scrollPosition = 0;
+
     carousel.style.transform = `translateX(${-scrollPosition}px)`;
+
     animationFrame = requestAnimationFrame(autoScroll);
+
 }
+
 autoScroll();
 
+
+
 // Pause on hover
+
 carousel.parentElement.addEventListener('mouseenter', () => cancelAnimationFrame(animationFrame));
+
 carousel.parentElement.addEventListener('mouseleave', () => autoScroll());
 
+
+
 // Arrow controls
+
 document.getElementById('prev').addEventListener('click', () => {
+
     scrollPosition -= cardWidth;
+
     if(scrollPosition < 0) scrollPosition = cardWidth * cards.length - cardWidth;
+
     carousel.style.transform = `translateX(${-scrollPosition}px)`;
+
 });
+
+
 
 document.getElementById('next').addEventListener('click', () => {
+
     scrollPosition += cardWidth;
+
     if(scrollPosition >= cardWidth * cards.length) scrollPosition = 0;
+
     carousel.style.transform = `translateX(${-scrollPosition}px)`;
+
 });
+
 </script>
-<footer style="background:linear-gradient(45deg,#e74c3c,#3498db); color:white; padding:40px 20px;">
 
-    <div style="text-align:center;">
-        <h2>Join UTHM and Unlock Your Potential!</h2>
-        <p>
-            Discover our wide range of programmes and start your journey<br>
-            at Universiti Tun Hussein Onn Malaysia today.
-        </p>
-        <a href="signup.html"
-           style="display:inline-block; padding:12px 25px; background:white; color:#e74c3c;
-                  text-decoration:none; border-radius:25px; font-weight:bold;">
-            Register for a Programme →
-        </a>
-    </div>
 
-    <hr style="margin:40px 0; border:1px solid rgba(255,255,255,0.4);">
 
-    <table width="100%" cellpadding="10">
-        <tr valign="top">
-            <td>
-                <h4>Contact</h4>
-                <p>📞 +607-453 7000</p>
-                <p>
-                    📍 Universiti Tun Hussein Onn Malaysia<br>
-                    86400 Parit Raja, Batu Pahat<br>
-                    Johor, Malaysia
-                </p>
-                <p>✉️ webmaster@uthm.edu.my</p>
-            </td>
 
-            <td>
-                <h4>Navigate</h4>
-                <p>Home</p>
-                <p>Academic Programmes</p>
-                <p>Research & Innovation</p>
-                <p>Student Affairs</p>
-                <p>International</p>
-            </td>
-
-            <td>
-                <h4>Faculties</h4>
-                <p>FKAAB</p>
-                <p>FKEE</p>
-                <p>FKMP</p>
-                <p>FSKTM</p>
-                <p>FPTP</p>
-            </td>
-
-            <td>
-                <h4>Discover</h4>
-                <p>Latest News</p>
-                <p>Events</p>
-                <p>UTHM Achievements</p>
-                <p>Career Opportunities</p>
-                <p>Alumni</p>
-            </td>
-
-            <td>
-                <h4>Follow Us</h4>
-                <p>Facebook</p>
-                <p>Instagram</p>
-                <p>YouTube</p>
-                <p>Twitter (X)</p>
-            </td>
-        </tr>
-    </table>
-
-    <hr style="margin:30px 0; border:1px solid rgba(255,255,255,0.4);">
-
-    <div style="display:flex; justify-content:space-between; font-size:14px; flex-wrap:wrap;">
-        <p>© Universiti Tun Hussein Onn Malaysia (UTHM). All Rights Reserved. 2024</p>
-        <p>
-            <a href="#" style="color:white; text-decoration:none;">Privacy Policy</a> |
-            <a href="#" style="color:white; text-decoration:none;">Terms & Conditions</a>
-        </p>
-    </div>
-
-</footer>
 
 </body>
+
 </html>
