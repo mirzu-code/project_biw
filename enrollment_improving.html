@@ -52,7 +52,7 @@ label{
     font-size:14px;
 }
 
-input, select{
+input{
     width:100%;
     padding:12px;
     border-radius:8px;
@@ -61,10 +61,10 @@ input, select{
     font-size:15px;
 }
 
-input:focus, select:focus{
+input:focus{
     outline:none;
-    border-color:#3b82f6;
-    box-shadow:0 0 0 2px rgba(59,130,246,0.2);
+    border-color:#2563eb;
+    box-shadow:0 0 0 2px rgba(37,99,235,0.2);
 }
 
 .back-btn{
@@ -107,55 +107,66 @@ input:focus, select:focus{
     🔒 Secure SSL encrypted enrollment
 </div>
 
-<div class="section-title">Enrollment & Payment Details</div>
+<div class="section-title">Payment Details</div>
+
+<form onsubmit="enroll(event)">
 
 <div class="grid">
+
     <div>
-        <label>Full Name</label>
-        <input type="text" placeholder="Enter your full name" required>
+        <label>Name on Card</label>
+        <input type="text" placeholder="Enter name as on card" required>
     </div>
 
     <div>
-        <label>Email Address</label>
-        <input type="email" placeholder="Enter your email" required>
+        <label>Card Number</label>
+        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="16" required>
     </div>
 
     <div class="full">
-        <label>Faculty / Course Code</label>
-        <select required>
-            <option>-- Select Faculty --</option>
-            <option>FKAAB</option>
-            <option>FKEE</option>
-            <option>FKMP</option>
-            <option>FSKTM</option>
-        </select>
-    </div>
-
-    <div class="full">
-        <label>Course Name</label>
-        <select required>
-            <option>-- Select Course --</option>
-            <option>Programming Fundamentals (Paid)</option>
-            <option>Database Systems (Paid)</option>
-            <option>Web Development Basics (Free)</option>
-        </select>
+        <label>Billing Address</label>
+        <input type="text" placeholder="Enter your billing address" required>
     </div>
 
     <div>
         <label>Expiry Date</label>
-        <input type="text" placeholder="MM/YY">
+        <input type="text" placeholder="MM/YY" required>
     </div>
 
     <div>
         <label>CVV</label>
-        <input type="text" placeholder="123">
+        <input type="text" placeholder="123" maxlength="3" required>
     </div>
-</div>
-
-<button class="back-btn">← Back to Personal Details</button>
-<button class="checkout">🛒 Enroll Now</button>
 
 </div>
+
+<button type="button" class="back-btn" onclick="goBack()">← Back to Personal Details</button>
+<button type="submit" class="checkout">🛒 Enroll Now</button>
+
+</form>
+
+</div>
+
+<script>
+function goBack(){
+    alert("Returning to Personal Details page...");
+    // Example redirect:
+    // window.location.href = "personal-details.html";
+}
+
+function enroll(e){
+    e.preventDefault();
+
+    const card = document.getElementById("cardNumber").value;
+
+    if(card.length !== 16 || isNaN(card)){
+        alert("Please enter a valid 16-digit card number.");
+        return;
+    }
+
+    alert("Enrollment Successful!\nYour payment has been processed.");
+}
+</script>
 
 </body>
 </html>
